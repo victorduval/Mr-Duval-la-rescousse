@@ -1,0 +1,1258 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="fr">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">\
+    <title>Mr Duval \'e0 la rescousse - Philo</title>\
+    <script src="https://cdn.tailwindcss.com"></script>\
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>\
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">\
+    <style>\
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');\
+        \
+        body \{\
+            font-family: 'Nunito', sans-serif;\
+            -webkit-tap-highlight-color: transparent;\
+            /* Magnifique fond bleu ciel doux avec un l\'e9ger motif */\
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #f0f9ff 100%);\
+            background-attachment: fixed;\
+        \}\
+\
+        /* Ambient background shapes for beauty */\
+        .ambient-shape \{\
+            position: fixed;\
+            border-radius: 50%;\
+            filter: blur(80px);\
+            z-index: -1;\
+            opacity: 0.6;\
+            pointer-events: none;\
+        \}\
+        .shape-1 \{ top: -10%; left: -10%; width: 50vw; height: 50vw; background: #93c5fd; \}\
+        .shape-2 \{ bottom: -10%; right: -10%; width: 40vw; height: 40vw; background: #bfdbfe; \}\
+        .shape-3 \{ top: 40%; left: 60%; width: 30vw; height: 30vw; background: #ddd6fe; opacity: 0.4; \}\
+\
+        @keyframes popIn \{\
+            0% \{ opacity: 0; transform: scale(0.95) translateY(10px); \}\
+            50% \{ transform: scale(1.02) translateY(-2px); \}\
+            100% \{ opacity: 1; transform: scale(1) translateY(0); \}\
+        \}\
+        .message-appear \{ animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; \}\
+\
+        /* Styles Markdown IA */\
+        .prose p \{ margin-bottom: 0.75rem; line-height: 1.6; \}\
+        .prose p:last-child \{ margin-bottom: 0; \}\
+        .prose ul \{ list-style-type: disc; margin-left: 1.5rem; margin-bottom: 0.75rem; \}\
+        .prose strong \{ color: #0369a1; font-weight: 800; \}\
+        .prose blockquote \{ border-left: 4px solid #38bdf8; padding-left: 1rem; color: #0c4a6e; font-style: italic; background: rgba(224, 242, 254, 0.5); padding: 0.75rem 1rem; border-radius: 0.75rem; margin: 1rem 0;\}\
+        .prose h3 \{ font-size: 1.1rem; font-weight: bold; color: #0284c7; margin-top: 1.5rem; margin-bottom: 0.5rem; \}\
+        .prose h4 \{ font-size: 1rem; font-weight: bold; color: #0ea5e9; margin-top: 1rem; margin-bottom: 0.25rem; \}\
+        \
+        /* Custom scrollbar transparente */\
+        ::-webkit-scrollbar \{ width: 8px; height: 8px; \}\
+        ::-webkit-scrollbar-track \{ background: transparent; \}\
+        ::-webkit-scrollbar-thumb \{ background: rgba(148, 163, 184, 0.5); border-radius: 20px; border: 2px solid transparent; background-clip: padding-box; \}\
+        ::-webkit-scrollbar-thumb:hover \{ background: rgba(148, 163, 184, 0.8); border: 2px solid transparent; background-clip: padding-box; \}\
+        \
+        /* Indicateur de frappe */\
+        .typing-indicator span \{\
+            display: inline-block;\
+            width: 8px;\
+            height: 8px;\
+            background-color: #38bdf8;\
+            border-radius: 50%;\
+            animation: bounce 1.2s infinite ease-in-out both;\
+            margin: 0 3px;\
+        \}\
+        .typing-indicator span:nth-child(1) \{ animation-delay: -0.32s; \}\
+        .typing-indicator span:nth-child(2) \{ animation-delay: -0.16s; \}\
+        @keyframes bounce \{\
+            0%, 80%, 100% \{ transform: scale(0); \}\
+            40% \{ transform: scale(1); background-color: #0284c7;\}\
+        \}\
+\
+        #subject-modal, #sidebar-overlay \{ transition: opacity 0.3s ease-in-out; \}\
+        .modal-content \{ transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); \}\
+        #sidebar \{ transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); \}\
+        \
+        /* Glassmorphism parfait */\
+        .glass-panel \{\
+            background: rgba(255, 255, 255, 0.7);\
+            backdrop-filter: blur(20px);\
+            -webkit-backdrop-filter: blur(20px);\
+            border: 1px solid rgba(255, 255, 255, 0.5);\
+        \}\
+        .glass-header \{\
+            background: rgba(255, 255, 255, 0.65);\
+            backdrop-filter: blur(24px);\
+            -webkit-backdrop-filter: blur(24px);\
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);\
+        \}\
+        .glass-input \{\
+            background: linear-gradient(to top, rgba(224, 242, 254, 0.95), rgba(255, 255, 255, 0.8));\
+            backdrop-filter: blur(20px);\
+            border-top: 1px solid rgba(255, 255, 255, 0.6);\
+        \}\
+\
+        .roadmap-line \{\
+            position: absolute;\
+            left: 23px;\
+            top: 30px;\
+            bottom: 20px;\
+            width: 3px;\
+            background: #bae6fd;\
+            z-index: 0;\
+            border-radius: 3px;\
+        \}\
+        .roadmap-step \{ position: relative; z-index: 10; \}\
+        \
+        .tab-active \{ border-bottom: 3px solid #0284c7; color: #0369a1; font-weight: 800; \}\
+        .tab-inactive \{ border-bottom: 3px solid transparent; color: #64748b; font-weight: 600; \}\
+    </style>\
+</head>\
+<body class="text-slate-700 h-screen overflow-hidden flex relative">\
+\
+    <!-- Formes d'ambiance fond d'\'e9cran -->\
+    <div class="ambient-shape shape-1"></div>\
+    <div class="ambient-shape shape-2"></div>\
+    <div class="ambient-shape shape-3"></div>\
+\
+    <div id="sidebar-overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-sky-900/30 z-30 hidden opacity-0 md:hidden backdrop-blur-sm"></div>\
+\
+    <div id="sidebar" class="glass-panel fixed inset-y-0 left-0 z-40 w-4/5 max-w-sm md:w-1/3 lg:w-[320px] flex flex-col shadow-[4px_0_24px_rgba(2,132,199,0.1)] md:shadow-none transform -translate-x-full md:relative md:translate-x-0">\
+        \
+        <div class="p-5 bg-gradient-to-br from-sky-500 to-blue-600 text-white flex items-center justify-between rounded-br-3xl shadow-sm relative z-20">\
+            <div class="flex items-center gap-3">\
+                <div class="bg-white/20 p-2.5 rounded-2xl flex items-center justify-center backdrop-blur-md border border-white/30 shadow-inner">\
+                    <span class="text-2xl">\uc0\u55357 \u56826 \u65039 </span>\
+                </div>\
+                <div>\
+                    <h1 class="font-extrabold text-xl leading-tight tracking-wide drop-shadow-sm">La M\'e9thode</h1>\
+                    <p class="text-sky-100 text-xs font-bold uppercase tracking-wider">Le chemin du 20/20</p>\
+                </div>\
+            </div>\
+            <button onclick="toggleSidebar()" class="md:hidden w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors">\
+                <i class="fa-solid fa-xmark"></i>\
+            </button>\
+        </div>\
+        \
+        <div class="p-4 overflow-y-auto flex-1 text-sm relative">\
+            <p class="text-sky-700 mb-6 text-xs text-center bg-white/80 backdrop-blur py-2.5 px-3 rounded-xl shadow-sm border border-sky-100 font-bold">\
+                \uc0\u55357 \u56424 \u8205 \u55356 \u57323  Mr Duval te guide pas \'e0 pas !\
+            </p>\
+            \
+            <div class="mb-8">\
+                <h2 class="font-black text-sky-700 pb-2 mb-4 uppercase text-xs tracking-widest flex items-center gap-2">\
+                    <span class="bg-sky-100 text-sky-600 p-1.5 rounded-lg"><i class="fa-solid fa-magnifying-glass"></i></span> \
+                    Phase 1 : Le Probl\'e8me\
+                </h2>\
+                <div class="relative pl-1">\
+                    <div class="roadmap-line"></div>\
+                    <div class="space-y-4">\
+                        <div class="flex gap-4 items-start roadmap-step group">\
+                            <div class="flex-shrink-0 w-10 h-10 rounded-2xl bg-white border-4 border-sky-200 text-sky-600 font-black flex items-center justify-center text-sm shadow-sm group-hover:border-sky-400 transition-all">A</div>\
+                            <div class="bg-white/90 backdrop-blur p-3 rounded-2xl shadow-sm border border-sky-100 flex-1">\
+                                <span class="font-bold text-slate-800 leading-none">Pr\'e9suppos\'e9 ou Def</span>\
+                                <p class="text-slate-500 mt-1 text-[11px] font-medium leading-snug">Attention : le pr\'e9suppos\'e9 ne r\'e9pond JAMAIS \'e0 la question ! Indice grammatical.</p>\
+                            </div>\
+                        </div>\
+                        <div class="flex gap-4 items-center roadmap-step group">\
+                            <div class="flex-shrink-0 w-10 h-10 rounded-2xl bg-white/50 border-4 border-slate-200 text-slate-400 font-black flex items-center justify-center text-sm">B</div>\
+                            <div class="font-bold text-slate-500">L'analyse (Justifier)</div>\
+                        </div>\
+                        <div class="flex gap-4 items-center roadmap-step group">\
+                            <div class="flex-shrink-0 w-10 h-10 rounded-2xl bg-white/50 border-4 border-slate-200 text-slate-400 font-black flex items-center justify-center text-sm">C</div>\
+                            <div class="font-bold text-slate-500">Les cons\'e9quences</div>\
+                        </div>\
+                        <div class="flex gap-4 items-center roadmap-step group">\
+                            <div class="flex-shrink-0 w-10 h-10 rounded-2xl bg-white border-4 border-sky-300 text-sky-500 font-black flex items-center justify-center text-sm shadow-sm">D</div>\
+                            <div class="flex-1">\
+                                <span class="font-bold text-slate-700 block mb-1">La Doxa (Spontan\'e9)</span>\
+                                <span class="text-[10px] text-sky-700 bg-sky-50 p-1.5 rounded-lg block border border-sky-100">La conclusion de A+B+C.<br><i>"\'c0 premi\'e8re vue..."</i></span>\
+                            </div>\
+                        </div>\
+                        <div class="flex gap-4 items-center roadmap-step group">\
+                            <div class="flex-shrink-0 w-10 h-10 rounded-2xl bg-white/50 border-4 border-slate-200 text-slate-400 font-black flex items-center justify-center text-sm">E</div>\
+                            <div class="font-bold text-slate-500">Les Limites de la doxa</div>\
+                        </div>\
+                        <div class="flex gap-4 items-center roadmap-step group">\
+                            <div class="flex-shrink-0 w-10 h-10 rounded-2xl bg-white/50 border-4 border-slate-200 text-slate-400 font-black flex items-center justify-center text-sm">F</div>\
+                            <div class="font-bold text-slate-500">Le Probl\'e8me final</div>\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>\
+\
+            <div class="mb-4">\
+                <h2 class="font-black text-blue-700 pb-2 mb-4 uppercase text-xs tracking-widest flex items-center gap-2">\
+                    <span class="bg-blue-100 text-blue-600 p-1.5 rounded-lg"><i class="fa-solid fa-layer-group"></i></span> \
+                    Phase 2 : Le Plan\
+                </h2>\
+                <div class="relative pl-1">\
+                    <div class="roadmap-line bg-blue-200"></div>\
+                    <div class="space-y-4">\
+                        <div class="flex gap-4 items-start roadmap-step group">\
+                            <div class="flex-shrink-0 w-10 h-10 rounded-2xl bg-white border-4 border-blue-200 text-blue-500 font-black flex items-center justify-center text-sm shadow-sm">I</div>\
+                            <div class="flex-1">\
+                                <span class="font-bold text-slate-700 block mb-1">I, puis II, puis III</span>\
+                                <div class="bg-blue-50/80 backdrop-blur p-2.5 rounded-xl border border-blue-100 text-[11px] font-bold text-blue-800 space-y-1">\
+                                    <div class="uppercase text-[10px] text-blue-600 mb-1 font-black"><i class="fa-solid fa-sitemap"></i> 3 Sous-parties (A, B, C)</div>\
+                                    <div class="uppercase text-[9px] text-blue-500 mb-1 border-t border-blue-200 pt-1.5 mt-1.5">Structure par sous-partie :</div>\
+                                    <div class="flex gap-2 items-center"><i class="fa-solid fa-check text-sky-500"></i> 1. Id\'e9e</div>\
+                                    <div class="flex gap-2 items-center"><i class="fa-solid fa-check text-sky-500"></i> 2. Argument</div>\
+                                    <div class="flex gap-2 items-center"><i class="fa-solid fa-check text-sky-500"></i> 3. R\'e9f Philo</div>\
+                                    <div class="flex gap-2 items-center"><i class="fa-solid fa-check text-sky-500"></i> 4. Exemple</div>\
+                                </div>\
+                            </div>\
+                        </div>\
+                        <div class="flex gap-4 items-center roadmap-step group">\
+                            <div class="flex-shrink-0 w-10 h-10 rounded-2xl bg-amber-50 border-4 border-amber-200 text-amber-500 font-black flex items-center justify-center text-[10px] shadow-sm"><i class="fa-solid fa-link"></i></div>\
+                            <div class="flex-1">\
+                                <span class="font-bold text-amber-600 block leading-none">Transitions</span>\
+                                <span class="text-[10px] font-bold text-amber-500 uppercase">Bilan + Question d'ouverture</span>\
+                            </div>\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>\
+            \
+        </div>\
+    </div>\
+\
+    <div class="flex-1 flex flex-col h-full relative w-full">\
+        \
+        <header class="glass-header absolute top-0 left-0 right-0 z-20 px-4 py-3 flex items-center justify-between shadow-[0_4px_30px_rgba(0,0,0,0.02)]">\
+            <div class="flex items-center gap-3">\
+                <button onclick="toggleSidebar()" class="md:hidden w-11 h-11 rounded-2xl bg-white/80 border border-sky-100 text-sky-700 hover:bg-white flex items-center justify-center transition-all active:scale-95 shadow-sm">\
+                    <i class="fa-solid fa-map text-lg"></i>\
+                </button>\
+                <div class="flex items-center gap-3 bg-white/80 backdrop-blur pl-2 pr-4 py-1.5 rounded-full border border-sky-100 shadow-sm">\
+                    <div class="w-9 h-9 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center text-lg shadow-inner">\
+                        \uc0\u55357 \u56424 \u8205 \u55356 \u57323 \
+                    </div>\
+                    <div>\
+                        <h2 class="font-extrabold text-slate-800 text-sm md:text-base leading-tight">Mr Duval</h2>\
+                        <div class="flex items-center gap-1.5">\
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>\
+                            <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">\'c0 la rescousse</span>\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>\
+\
+            <button onclick="openModal()" class="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white px-4 md:px-5 py-2.5 rounded-2xl shadow-[0_4px_15px_rgba(2,132,199,0.3)] text-xs md:text-sm font-bold transition-all active:scale-95 flex items-center gap-2 border border-sky-400/50">\
+                <i class="fa-solid fa-layer-group"></i> \
+                <span class="hidden sm:inline">Sujets & Corrig\'e9s</span>\
+                <span class="sm:hidden">Sujets</span>\
+            </button>\
+        </header>\
+\
+        <div id="chat-container" class="flex-1 px-4 md:px-6 pt-24 pb-4 overflow-y-auto flex flex-col gap-6 scroll-smooth">\
+            <!-- Initialis\'e9 en JS -->\
+        </div>\
+\
+        <div class="glass-input p-3 md:p-5 pb-5 md:pb-6 relative w-full shadow-[0_-10px_40px_rgba(2,132,199,0.05)]">\
+            <div class="max-w-4xl mx-auto">\
+                <div class="flex justify-center gap-2 md:gap-4 mb-3 flex-wrap">\
+                    <button type="button" id="hint-btn" class="group relative overflow-hidden text-xs font-bold text-sky-700 bg-white/80 hover:bg-white px-4 py-2 rounded-full shadow-sm border border-sky-200 transition-all flex items-center gap-2 active:scale-95 hover:shadow-md">\
+                        <span class="text-base">\uc0\u55357 \u56481 </span>\
+                        <span>Un indice s'il te pla\'eet</span>\
+                    </button>\
+                    <button type="button" id="help-btn" class="group relative overflow-hidden text-xs font-bold text-amber-700 bg-white/80 hover:bg-white px-4 py-2 rounded-full shadow-sm border border-amber-200 transition-all flex items-center gap-2 active:scale-95 hover:shadow-md">\
+                        <span class="text-base">\uc0\u55357 \u57055 </span>\
+                        <span>Je bloque, correction !</span>\
+                    </button>\
+                </div>\
+\
+                <form id="chat-form" class="relative bg-white/90 backdrop-blur-md rounded-3xl shadow-lg border border-sky-100 transition-all focus-within:shadow-[0_8px_30px_rgba(2,132,199,0.15)] focus-within:border-sky-300 flex items-end">\
+                    <textarea id="user-input" rows="1" \
+                        class="w-full pl-6 pr-16 py-4 max-h-[150px] bg-transparent focus:outline-none resize-none text-slate-700 placeholder-slate-400 text-base font-medium"\
+                        placeholder="\'c9cris ta r\'e9ponse ici..." required></textarea>\
+                    \
+                    <button type="submit" id="send-btn"\
+                        class="absolute right-2 bottom-2 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white w-11 h-11 rounded-2xl flex items-center justify-center transition-transform hover:scale-105 active:scale-95 shadow-md">\
+                        <i class="fa-solid fa-paper-plane text-lg"></i>\
+                    </button>\
+                </form>\
+                <div class="text-center mt-2.5 hidden md:block">\
+                    <span class="text-[10px] text-slate-500 font-bold tracking-widest uppercase bg-white/40 backdrop-blur px-3 py-1 rounded-full border border-white/50">Entr\'e9e = Envoyer &nbsp;\'95&nbsp; Maj+Entr\'e9e = Saut de ligne</span>\
+                </div>\
+            </div>\
+        </div>\
+    </div>\
+\
+    <!-- Modal Choix de Sujets & Corrig\'e9s -->\
+    <div id="subject-modal" class="fixed inset-0 bg-sky-950/40 z-50 hidden opacity-0 flex items-end md:items-center justify-center backdrop-blur-sm p-0 md:p-4">\
+        <div class="bg-white/95 backdrop-blur-xl rounded-t-3xl md:rounded-3xl shadow-2xl w-full max-w-6xl max-h-[90vh] h-[90vh] md:h-[85vh] flex flex-col modal-content transform translate-y-full md:translate-y-0 md:scale-95 border border-white">\
+            \
+            <div class="p-4 md:p-6 border-b border-sky-100 flex justify-between items-center z-10 bg-white/50 rounded-t-3xl md:rounded-3xl">\
+                <div class="flex-1">\
+                    <div class="flex items-center justify-between mb-4">\
+                        <h2 class="text-xl md:text-2xl font-black text-slate-800 tracking-tight flex items-center gap-2">\
+                            <i class="fa-solid fa-book-bookmark text-sky-500"></i> Le Catalogue\
+                        </h2>\
+                        <button onclick="closeModal()" class="text-slate-400 hover:text-rose-500 hover:bg-rose-50 transition-colors w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm border border-slate-100">\
+                            <i class="fa-solid fa-xmark text-xl"></i>\
+                        </button>\
+                    </div>\
+                    \
+                    <div class="flex gap-4">\
+                        <button onclick="switchTab('train')" id="tab-train" class="pb-3 px-2 tab-active transition-colors uppercase text-xs md:text-sm tracking-widest flex items-center gap-2">\
+                            <i class="fa-solid fa-dumbbell"></i> S'entra\'eener (Sujets)\
+                        </button>\
+                        <button onclick="switchTab('solutions')" id="tab-solutions" class="pb-3 px-2 tab-inactive hover:text-slate-700 transition-colors uppercase text-xs md:text-sm tracking-widest flex items-center gap-2">\
+                            <i class="fa-solid fa-file-contract"></i> Corrig\'e9s complets\
+                        </button>\
+                    </div>\
+                </div>\
+            </div>\
+\
+            <!-- Contenu Tab 1 : S'entra\'eener -->\
+            <div class="p-5 md:p-8 overflow-y-auto flex-1 bg-slate-50/50" id="content-train">\
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5" id="modal-subjects-grid">\
+                    <!-- Rempli par JS avec les 17 notions -->\
+                </div>\
+            </div>\
+\
+            <!-- Contenu Tab 2 : Corrig\'e9s complets -->\
+            <div class="p-0 overflow-y-auto flex-1 bg-slate-50/50 hidden relative" id="content-solutions">\
+                <div id="solutions-list" class="p-5 md:p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">\
+                    <!-- Rempli par JS -->\
+                </div>\
+\
+                <div id="solution-reader" class="hidden absolute inset-0 bg-white p-6 md:p-10 overflow-y-auto">\
+                    <button onclick="backToSolutionsList()" class="mb-6 flex items-center gap-2 text-sky-600 font-bold hover:text-sky-800 transition-colors bg-sky-50 px-4 py-2 rounded-full w-max border border-sky-100">\
+                        <i class="fa-solid fa-arrow-left"></i> Retour \'e0 la liste\
+                    </button>\
+                    <div id="solution-content" class="prose max-w-4xl mx-auto">\
+                        <!-- Texte markdown du corrig\'e9 -->\
+                    </div>\
+                </div>\
+            </div>\
+        </div>\
+    </div>\
+\
+    <script>\
+        // === CONFIGURATION API (Version Canvas) ===\
+        // Cl\'e9 laiss\'e9e vide expr\'e8s pour que \'e7a marche dans cet environnement de test.\
+        // \'c0 remplacer par votre cl\'e9 et le mod\'e8le gemini-2.0-flash lors de l'export !\
+        const apiKey = "AIzaSyD3B-pOGEFiFJzyprKt2kQLkfkCDi2k0A4"; \
+        const MODEL_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=$\{apiKey\}`;\
+\
+        // === LES 17 NOTIONS OFFICIELLES ===\
+        const subjectCatalog = \{\
+            "L'art": ["L'art nous d\'e9tourne-t-il de la r\'e9alit\'e9 ?", "L'\'9cuvre d'art a-t-elle toujours un sens ?", "L'art peut-il se passer de r\'e8gles ?"],\
+            "Le devoir": ["Agir par devoir, est-ce renoncer \'e0 son bonheur ?", "Peut-on justifier une faute par le devoir ?", "Le devoir a-t-il toujours un sens ?"],\
+            "La justice": ["Suffit-il d'ob\'e9ir aux lois pour \'eatre juste ?", "La justice est-elle une vengeance d\'e9guis\'e9e ?", "Peut-il y avoir des in\'e9galit\'e9s justes ?"],\
+            "La nature": ["L'homme fait-il exception dans la nature ?", "Faut-il prot\'e9ger la nature pour elle-m\'eame ?"],\
+            "La science": ["La science d\'e9tient-elle le monopole de la v\'e9rit\'e9 ?", "Les v\'e9rit\'e9s scientifiques sont-elles d\'e9finitives ?", "La science nous permet-elle d'\'e9chapper aux illusions ?"],\
+            "Le travail": ["Travailler, est-ce perdre sa libert\'e9 ?", "Le travail n'est-il qu'une contrainte \'e9conomique ?"],\
+            "Le bonheur": ["Travailler participe-t-il au bonheur ?", "Le bonheur est-il le but de l'existence ?", "D\'e9pend-il de nous d'\'eatre heureux ?"],\
+            "L'Etat": ["L'\'c9tat est-il l'ennemi de la libert\'e9 ?", "Peut-on concevoir une soci\'e9t\'e9 sans \'c9tat ?", "Le but de l'\'c9tat est-il d'assurer le bonheur des citoyens ?"],\
+            "Le langage": ["Les mots nous \'e9loignent-ils des choses ?", "Le langage sert-il seulement \'e0 communiquer ?", "Peut-on penser sans les mots ?"],\
+            "La raison": ["La raison peut-elle tout expliquer ?", "La raison est-elle n\'e9cessairement oppos\'e9e \'e0 la croyance ?", "La raison a-t-elle toujours raison ?"],\
+            "La technique": ["Nos techniques nous permettent-elles de dominer la nature ?", "La technique nous lib\'e8re-t-elle du travail ?", "Le d\'e9veloppement technique implique-t-il un progr\'e8s moral ?"],\
+            "La v\'e9rit\'e9": ["Toute v\'e9rit\'e9 est-elle indiscutable ?", "Peut-on dire \'e0 chacun sa v\'e9rit\'e9 ?", "Toute v\'e9rit\'e9 est-elle bonne \'e0 dire ?"],\
+            "La conscience": ["N'exprime-t-on que ce dont on a conscience ?", "La conscience de soi est-elle une connaissance de soi ?", "Suis-je ce que j'ai conscience d'\'eatre ?"],\
+            "L'inconscient": ["L'inconscient est-il une excuse ?", "L'id\'e9e d'inconscient exclut-elle l'id\'e9e de libert\'e9 ?", "Peut-on conna\'eetre son inconscient ?"],\
+            "La libert\'e9": ["Sommes-nous ma\'eetres de nos pens\'e9es ?", "La libert\'e9 est-elle une illusion ?", "La libert\'e9 peut-elle \'eatre un fardeau ?"],\
+            "La religion": ["La religion est-elle une illusion ?", "Peut-on \'eatre moral sans religion ?", "La foi exclut-elle la raison ?"],\
+            "Le temps": ["Faut-il vivre dans le pr\'e9sent ?", "Le temps est-il notre ennemi ?", "Peut-on ma\'eetriser le temps ?"]\
+        \};\
+\
+        const correctedSubjects = [\
+            \{\
+                title: "La libert\'e9 peut-elle \'eatre un fardeau ?",\
+                content: `\
+### Phase 1 : Probl\'e9matisation\
+**a) Pr\'e9suppos\'e9 (Grammaire) :** L'usage du verbe \'ab peut \'bb (\'e9ventualit\'e9) pr\'e9suppose que le caract\'e8re pesant de la libert\'e9 n'est pas sa nature habituelle ou \'e9vidente, mais plut\'f4t une hypoth\'e8se paradoxale. On part donc du constat que la libert\'e9 est, par d\'e9faut, v\'e9cue comme une l\'e9g\'e8ret\'e9.\
+**b) Justification :** Historiquement, la libert\'e9 est la fin de la soumission (\'e0 un tyran, \'e0 l'esclavage). Psychologiquement, le "temps libre" est associ\'e9 au rel\'e2chement de la contrainte.\
+**c) Implications :** L'homme libre ne devrait jamais envier celui qui est dirig\'e9, et avoir le choix devrait toujours \'eatre source de joie.\
+**d) Doxa :** \'c0 premi\'e8re vue, il semble que la libert\'e9 et le fardeau s'excluent mutuellement. Pour l'opinion commune, \'eatre libre, c'est \'ab faire ce que l'on veut \'bb, ce qui est l'inverse d'une charge pesante. La libert\'e9 serait une pure l\'e9g\'e8ret\'e9.\
+**e) Limites :** Cependant, avoir le choix implique de renoncer, ce qui g\'e9n\'e8re de l'angoisse. De plus, ne d\'e9pendre de personne implique de devenir responsable de tout ce qui nous arrive.\
+**f) Probl\'e8me :** Le poids de la libert\'e9 (le fardeau) n'est-il qu'un accident li\'e9 \'e0 notre difficult\'e9 ponctuelle \'e0 choisir, ou bien est-il la structure intime et vertigineuse de notre condition d'\'eatre responsable ?\
+\
+### Phase 2 : Le Plan D\'e9taill\'e9\
+\
+### I. Th\'e8se : Spontan\'e9ment, la libert\'e9 s'\'e9prouve comme un all\'e8gement\
+#### A. La lib\'e9ration des contraintes physiques et politiques\
+* **Id\'e9e :** La libert\'e9 est d'abord l'arrachement \'e0 l'oppression et aux cha\'eenes.\
+* **Argument :** Retirer une contrainte, c'est litt\'e9ralement supprimer un poids. L'homme priv\'e9 de libert\'e9 est \'e9cras\'e9 sous la volont\'e9 d'un autre.\
+* **R\'e9f philo :** Hobbes (La libert\'e9 comme "absence d'obstacles ext\'e9rieurs" au mouvement).\
+* **Exemple :** L'\'e9mancipation d'un peuple ou la fin de l'esclavage, v\'e9cues comme une d\'e9livrance.\
+\
+#### B. L'illusion de la libert\'e9 d'indiff\'e9rence\
+* **Id\'e9e :** Avoir le choix infini donne le sentiment d'une pure l\'e9g\'e8ret\'e9.\
+* **Argument :** Pouvoir agir sans raison d\'e9terminante donne l'impression d'une absence totale de gravit\'e9. Le choix semble \'eatre un pur jeu sans cons\'e9quence.\
+* **R\'e9f philo :** Descartes (La libert\'e9 d'indiff\'e9rence, souvent confondue avec la libert\'e9 totale par l'opinion commune).\
+* **Exemple :** Un enfant dans un magasin de jouets \'e0 qui l'on dit "prends ce que tu veux".\
+\
+#### C. L'ataraxie ou la paix de l'\'e2me\
+* **Id\'e9e :** La v\'e9ritable libert\'e9 du sage all\'e8ge l'esprit de ses tourments.\
+* **Argument :** En se lib\'e9rant des faux besoins (gloire, richesse), l'homme atteint un \'e9tat de qui\'e9tude o\'f9 plus aucun manque ne p\'e8se sur lui.\
+* **R\'e9f philo :** \'c9picure (L'ataraxie, l'absence de trouble de l'\'e2me).\
+* **Exemple :** Le sage qui vit heureux avec tr\'e8s peu, d\'e9charg\'e9 du poids de la comp\'e9tition sociale.\
+\
+*Transition : [Bilan] La libert\'e9 semble donc fondamentalement lib\'e9ratrice et l\'e9g\'e8re. [Question] Toutefois, \'eatre son propre ma\'eetre ne signifie-t-il pas aussi qu'on ne peut plus s'en remettre \'e0 personne pour justifier ses \'e9checs ? N'y a-t-il pas une angoisse inh\'e9rente au choix libre ?*\
+\
+### II. Antith\'e8se : L'exercice r\'e9el de la libert\'e9 impose le fardeau \'e9crasant de la responsabilit\'e9\
+#### A. L'angoisse face \'e0 l'infinit\'e9 des possibles\
+* **Id\'e9e :** L'acte de choisir est en lui-m\'eame une source d'angoisse.\
+* **Argument :** Face au vide de l'avenir, la libert\'e9 donne le vertige. Car chaque choix implique l'\'e9limination irr\'e9m\'e9diable d'autres possibilit\'e9s. Choisir, c'est renoncer.\
+* **R\'e9f philo :** Kierkegaard (Le concept d'angoisse comme "vertige de la libert\'e9").\
+* **Exemple :** L'\'e9tudiant t\'e9tanis\'e9 devant Parcoursup, \'e9cras\'e9 par le poids de l'orientation de sa vie.\
+\
+#### B. La responsabilit\'e9 absolue et sans excuse\
+* **Id\'e9e :** \'catre libre, c'est r\'e9pondre int\'e9gralement de ses actes.\
+* **Argument :** S'il n'y a pas de destin, l'homme est le seul auteur de son existence. Il porte le poids entier de la morale sur ses \'e9paules, sans pouvoir se justifier.\
+* **R\'e9f philo :** Jean-Paul Sartre ("L'homme est condamn\'e9 \'e0 \'eatre libre").\
+* **Exemple :** Le r\'e9sistant qui doit choisir seul entre parler et d\'e9noncer ses camarades, ou se taire et mourir.\
+\
+#### C. La tentation de la servitude volontaire\
+* **Id\'e9e :** Le fardeau de la libert\'e9 est si lourd que les hommes pr\'e9f\'e8rent souvent y renoncer.\
+* **Argument :** Pour \'e9chapper \'e0 l'angoisse du choix et \'e0 la responsabilit\'e9, la conscience pr\'e9f\'e8re s'ali\'e9ner en ob\'e9issant aveugl\'e9ment. L'ob\'e9issance offre le confort de l'irresponsabilit\'e9.\
+* **R\'e9f philo :** Erich Fromm (*La Peur de la libert\'e9*).\
+* **Exemple :** Les foules modernes qui s'en remettent \'e0 un leader populiste pour ne plus avoir \'e0 d\'e9cider.\
+\
+*Transition : [Bilan] La libert\'e9 s'av\'e8re donc \'eatre un poids immense qui terrifie souvent les hommes. [Question] Mais ce fardeau doit-il n\'e9cessairement nous \'e9craser, ou bien n'est-il pas la condition m\'eame de notre dignit\'e9, un poids qu'il faut apprendre \'e0 assumer ?*\
+\
+### III. Synth\'e8se : Assumer le fardeau pour acc\'e9der \'e0 l'autonomie morale\
+#### A. La diff\'e9rence entre la charge subie et le devoir assum\'e9\
+* **Id\'e9e :** Le poids de la libert\'e9 change de nature quand il est accept\'e9 par la raison.\
+* **Argument :** L'homme n'est pas libre quand il fait ce qu'il veut, mais quand il s'impose \'e0 lui-m\'eame la loi morale. Ce n'est plus un "fardeau" ext\'e9rieur, mais la fiert\'e9 de sa propre dignit\'e9.\
+* **R\'e9f philo :** Kant (L'autonomie de la volont\'e9).\
+* **Exemple :** Le lanceur d'alerte qui s'impose de lourds sacrifices non par contrainte, mais par pur devoir moral.\
+\
+#### B. L'amour du destin (Amor Fati)\
+* **Id\'e9e :** Il faut transformer le fardeau du choix en une affirmation joyeuse.\
+* **Argument :** La vraie l\'e9g\'e8ret\'e9 ne s'obtient pas en fuyant le poids de l'existence, mais en l'embrassant avec une volont\'e9 cr\'e9atrice.\
+* **R\'e9f philo :** Nietzsche (Le chameau qui porte le fardeau devient un lion, puis un enfant cr\'e9ateur).\
+* **Exemple :** L'artiste qui assume la difficult\'e9 immense de la cr\'e9ation pour accoucher d'un chef-d'\'9cuvre.\
+\
+#### C. La libert\'e9 comme \'9cuvre collective qui all\'e8ge le poids individuel\
+* **Id\'e9e :** Le fardeau de la libert\'e9 s'all\'e8ge quand il est partag\'e9 politiquement.\
+* **Argument :** La libert\'e9 n'est pas qu'une angoisse solitaire. C'est dans l'action commune et l'espace public que les individus partagent la responsabilit\'e9 du monde.\
+* **R\'e9f philo :** Hannah Arendt (La libert\'e9 est politique, elle r\'e9side dans l'action plurielle).\
+* **Exemple :** Le citoyen engag\'e9 dans une d\'e9mocratie d\'e9lib\'e9rative, o\'f9 le poids du choix de soci\'e9t\'e9 est d\'e9battu et partag\'e9 solidairement.\
+                `\
+            \},\
+            \{\
+                title: "Le temps est-il notre ennemi ?",\
+                content: `\
+### Phase 1 : Probl\'e9matisation\
+**a) Pr\'e9suppos\'e9 (Grammaire) :** L'utilisation du mot \'ab ennemi \'bb implique une *personnification* du temps. La question pr\'e9suppose que le temps est une entit\'e9 active avec laquelle on entretient une relation (d'hostilit\'e9 ou d'alliance).\
+**b) Justification :** Le vieillissement naturel, la fuite in\'e9luctable des instants, l'impossibilit\'e9 de revenir en arri\'e8re.\
+**c) Implications :** L'homme vit dans l'angoisse permanente de sa perte, il tente de lutter contre une force invisible.\
+**d) Doxa :** \'c0 premi\'e8re vue, il peut sembler que le temps soit notre pire adversaire, car il d\'e9truit tout ce que nous construisons et nous rapproche in\'e9luctablement de la mort.\
+**e) Limites :** Cependant, le temps est aussi ce qui permet de grandir, de m\'fbrir, de construire des projets et de gu\'e9rir les blessures.\
+**f) Probl\'e8me :** Le temps doit-il \'eatre compris comme la force destructrice ultime de notre existence, ou comme la condition n\'e9cessaire de tout accomplissement humain ?\
+\
+### Phase 2 : Le Plan D\'e9taill\'e9\
+\
+### I. Th\'e8se : Le temps s'\'e9prouve d'abord comme une puissance de destruction\
+#### A. L'irr\'e9versibilit\'e9 du temps\
+* **Id\'e9e :** Le temps est ce qui nous prive \'e0 jamais de nos possibles.\
+* **Argument :** L'\'e9coulement temporel est \'e0 sens unique. Chaque choix tue d'autres possibilit\'e9s, engendrant le regret face \'e0 un pass\'e9 inchangeable.\
+* **R\'e9f philo :** Vladimir Jank\'e9l\'e9vitch (L'irr\'e9versible et la nostalgie).\
+* **Exemple :** Le remords d'avoir prononc\'e9 des paroles blessantes qu'on ne peut plus effacer.\
+\
+#### B. La fuite de l'instant\
+* **Id\'e9e :** Le temps nous emp\'eache de co\'efncider avec nous-m\'eames au pr\'e9sent.\
+* **Argument :** Le pr\'e9sent n'est qu'une ligne insaisissable entre un pass\'e9 qui n'est plus et un futur qui n'est pas encore. \
+* **R\'e9f philo :** Saint Augustin (Les confessions).\
+* **Exemple :** La frustration de vouloir faire "durer" un moment joyeux.\
+\
+#### C. L'horizon in\'e9luctable de la mort\
+* **Id\'e9e :** Le temps est l'usure qui conduit au n\'e9ant.\
+* **Argument :** Physiologiquement, la dur\'e9e se traduit par la d\'e9gradation (entropie). Vivre, c'est mourir un peu chaque jour.\
+* **R\'e9f philo :** Heidegger (L'homme comme "\'eatre-pour-la-mort").\
+* **Exemple :** L'apparition des rides ou la d\'e9gradation d'un b\'e2timent historique.\
+\
+*Transition : [Bilan] Le temps appara\'eet bien comme une force d'usure. [Question] Cependant, si le temps figeait toute chose, serions-nous encore capables de libert\'e9 et de changement ?*\
+\
+### II. Antith\'e8se : Le temps est la condition de possibilit\'e9 de la conscience\
+#### A. Le temps comme dimension du projet\
+* **Id\'e9e :** Sans le futur, aucune action libre n'aurait de sens.\
+* **Argument :** C'est parce que nous avons du temps devant nous que nous pouvons former des buts. L'ennui na\'eet pr\'e9cis\'e9ment quand le temps "s'arr\'eate".\
+* **R\'e9f philo :** Sartre (Le projet comme fondement de la libert\'e9).\
+* **Exemple :** Les ann\'e9es d'\'e9tudes n\'e9cessaires pour acqu\'e9rir un m\'e9tier.\
+\
+#### B. La maturation et l'exp\'e9rience\
+* **Id\'e9e :** Le passage du temps enrichit l'\'eatre humain.\
+* **Argument :** Le temps accumul\'e9 se s\'e9dimente sous forme d'exp\'e9rience et de sagesse, il ne fait pas que nous user.\
+* **R\'e9f philo :** Bergson (La "dur\'e9e" cr\'e9atrice).\
+* **Exemple :** Le discernement d'une personne \'e2g\'e9e.\
+\
+#### C. L'oubli comme force vitale\
+* **Id\'e9e :** La disparition du pass\'e9 est n\'e9cessaire \'e0 la sant\'e9 mentale.\
+* **Argument :** Si le temps ne s'\'e9coulait pas, nous serions \'e9cras\'e9s par nos traumatismes. L'oubli est une facult\'e9 active de gu\'e9rison.\
+* **R\'e9f philo :** Nietzsche (La "force d'oubli").\
+* **Exemple :** La douleur d'un deuil qui s'att\'e9nue.\
+\
+*Transition : [Bilan] Loin d'\'eatre notre adversaire, le temps s'av\'e8re \'eatre la substance m\'eame de notre libert\'e9. [Question] Mais puisque le temps est notre propre substance, parler d'ennemi a-t-il encore un sens ?*\
+\
+### III. Synth\'e8se : Se r\'e9concilier avec le temps en habitant le pr\'e9sent\
+#### A. L'illusion de l'ext\'e9riorit\'e9\
+* **Id\'e9e :** Le temps n'est pas un cadre vide dans lequel nous tombons.\
+* **Argument :** Consid\'e9rer le temps comme un "ennemi" est une illusion d'optique. Nous *sommes* du temps.\
+* **R\'e9f philo :** Kant (Le temps comme forme a priori de notre sens intime).\
+* **Exemple :** L'absurdit\'e9 de vouloir "gagner" du temps comme une monnaie.\
+\
+#### B. La sagesse de l'acceptation (L'amor fati)\
+* **Id\'e9e :** Le bonheur passe par l'acceptation joyeuse de l'\'e9coulement.\
+* **Argument :** La sagesse consiste \'e0 \'e9pouser le mouvement de la vie et \'e0 aimer son destin.\
+* **R\'e9f philo :** Les Sto\'efciens (S\'e9n\'e8que).\
+* **Exemple :** Accepter de vieillir sereinement.\
+\
+#### C. L'\'e9ternit\'e9 dans l'instant\
+* **Id\'e9e :** L'intensit\'e9 de la vie \'e9chappe \'e0 la chronologie.\
+* **Argument :** Par l'art ou l'amour, nous vivons des instants d'une pl\'e9nitude absolue qui \'e9chappent \'e0 la destruction.\
+* **R\'e9f philo :** \'c9picure.\
+* **Exemple :** L'\'e9motion esth\'e9tique totale devant une \'9cuvre d'art.\
+                `\
+            \},\
+            \{\
+                title: "N'exprime-t-on que ce dont on a conscience ?",\
+                content: `\
+### Phase 1 : Probl\'e9matisation\
+**a) Pr\'e9suppos\'e9 (Grammaire) :** La restriction \'ab ne... que \'bb pr\'e9suppose qu'il y a *d\'e9j\'e0* une identit\'e9 de fait entre expression et conscience (on exprime ce qu'on a \'e0 l'esprit).\
+**b) Justification :** Intentionnalit\'e9 du langage, responsabilit\'e9 morale (on est auteur de ses mots).\
+**c) Implications :** Transparence du sujet, inexistence de l'inconscient.\
+**d) Doxa :** \'c0 premi\'e8re vue, il semble \'e9vident qu'exprimer, c'est "faire sortir" volontairement une id\'e9e claire.\
+**e) Limites :** Lapsus, langage du corps, cr\'e9ation artistique.\
+**f) Probl\'e8me :** L'expression est-elle un acte de ma\'eetrise totale (traduction) ou un processus de r\'e9v\'e9lation (sympt\'f4me) ?\
+\
+### Phase 2 : Le Plan D\'e9taill\'e9\
+\
+### I. Th\'e8se : Au sens strict, l'expression v\'e9ritable exige la conscience\
+#### A. L'intentionnalit\'e9 de la parole\
+* **Id\'e9e :** S'exprimer n'est pas un r\'e9flexe, c'est un acte volontaire.\
+* **Argument :** Pour parler de fa\'e7on coh\'e9rente, il faut avoir pr\'e9alablement con\'e7u une intention de sens. Sans conscience, il n'y a que du bruit.\
+* **R\'e9f philo :** Descartes (Le langage prouve la pens\'e9e).\
+* **Exemple :** Un discours politique minutieusement pr\'e9par\'e9.\
+\
+#### B. La responsabilit\'e9 morale du sujet parlant\
+* **Id\'e9e :** L'institution exige que nous soyons conscients de nos expressions.\
+* **Argument :** Si l'on ne contr\'f4lait pas ce que l'on dit, la notion de promesse s'effondrerait.\
+* **R\'e9f philo :** Kant (Le sujet moral r\'e9pond de ses paroles).\
+* **Exemple :** T\'e9moigner sous serment lors d'un proc\'e8s.\
+\
+#### C. L'exigence de clart\'e9\
+* **Id\'e9e :** Une expression n'est aboutie que lorsqu'elle est transparente pour la conscience.\
+* **Argument :** Les id\'e9es confuses ne trouvent pas leurs mots.\
+* **R\'e9f philo :** Boileau ("Ce que l'on con\'e7oit bien s'\'e9nonce clairement").\
+* **Exemple :** Expliquer calmement son ressenti plut\'f4t que de marmonner sous la col\'e8re.\
+\
+*Transition : [Bilan] L'expression, d\'e9finie comme communication intentionnelle, requiert donc la conscience. [Question] Cependant, comment expliquer les r\'e9actions involontaires de notre corps ? Ne sommes-nous pas parfois "trahis" par ce que nous exprimons ?*\
+\
+### II. Antith\'e8se : L'expression d\'e9borde la conscience et r\'e9v\'e8le l'inconscient\
+#### A. Les failles du discours : le retour du refoul\'e9\
+* **Id\'e9e :** Nos erreurs d'expression sont porteuses de sens.\
+* **Argument :** Le lapsus est l'expression d'un d\'e9sir inconscient qui force le barrage de la censure.\
+* **R\'e9f philo :** Freud (*Psychopathologie de la vie quotidienne*).\
+* **Exemple :** Le Pr\'e9sident d\'e9clarant la s\'e9ance "close" au lieu d'"ouverte".\
+\
+#### B. Le langage du corps comme sympt\'f4me\
+* **Id\'e9e :** Le corps s'exprime de mani\'e8re autonome.\
+* **Argument :** Nos postures expriment des angoisses que notre conscience refuse d'admettre. L'expression devient "sympt\'f4me".\
+* **R\'e9f philo :** Spinoza ("Nul ne sait ce que peut le corps").\
+* **Exemple :** Rougir de honte malgr\'e9 la volont\'e9 de para\'eetre calme.\
+\
+#### C. L'inspiration artistique\
+* **Id\'e9e :** Le g\'e9nie cr\'e9ateur s'exprime souvent sans ma\'eetriser son \'9cuvre.\
+* **Argument :** L'artiste exprime des v\'e9rit\'e9s pulsionnelles plus grandes que lui.\
+* **R\'e9f philo :** Kant (Le g\'e9nie comme disposition inn\'e9e de la nature).\
+* **Exemple :** L'\'e9criture automatique des Surr\'e9alistes.\
+\
+*Transition : [Bilan] Il est ind\'e9niable que l'expression nous \'e9chappe largement, devenant le porte-voix de notre part obscure. [Question] Mais si l'inconscient s'exprime "\'e0 notre place", le sujet est-il condamn\'e9 \'e0 \'eatre le spectateur de ses propres paroles ?*\
+\
+### III. Synth\'e8se : L'expression est le processus m\'eame de la prise de conscience\
+#### A. L'illusion d'une pens\'e9e pr\'e9existante aux mots\
+* **Id\'e9e :** On ne pense pas avant de s'exprimer.\
+* **Argument :** La pens\'e9e sans le langage n'est qu'une n\'e9buleuse. C'est le fait de chercher ses mots qui fait na\'eetre la pens\'e9e.\
+* **R\'e9f philo :** Hegel ("C'est dans le mot que nous pensons").\
+* **Exemple :** Avoir le mot "sur le bout de la langue".\
+\
+#### B. L'expression comme av\'e8nement de la conscience de soi\
+* **Id\'e9e :** L'expression n'est pas une simple traduction, c'est une cr\'e9ation de soi.\
+* **Argument :** C'est en m'exprimant que je d\'e9couvre v\'e9ritablement ce que j'\'e9prouve.\
+* **R\'e9f philo :** Merleau-Ponty (La distinction parole parl\'e9e / parole parlante).\
+* **Exemple :** Tenir un journal intime.\
+\
+#### C. La n\'e9cessaire r\'e9appropriation par l'herm\'e9neutique\
+* **Id\'e9e :** L'enjeu est de s'approprier a posteriori l'expression qui nous \'e9chappe.\
+* **Argument :** Si l'inconscient s'exprime, le r\'f4le de la conscience est de d\'e9chiffrer ce sens.\
+* **R\'e9f philo :** Paul Ric\'9cur (La philosophie comme herm\'e9neutique du sujet).\
+* **Exemple :** Le patient en psychanalyse qui analyse ses r\'eaves.\
+                `\
+            \},\
+            \{\
+                title: "La raison peut-elle tout expliquer ?",\
+                content: `\
+### Phase 1 : Probl\'e9matisation\
+**a) Pr\'e9suppos\'e9 (Grammaire) :** L'utilisation du mot \'ab tout \'bb (pronom ind\'e9fini de totalit\'e9) pr\'e9suppose que la raison explique *d\'e9j\'e0* certaines choses, et que le r\'e9el poss\'e8de une structure intelligible. La question porte uniquement sur l'extension universelle de ce pouvoir.\
+**b) Justification :** Les succ\'e8s immenses et continus des sciences, le d\'e9veloppement des math\'e9matiques, le principe de causalit\'e9.\
+**c) Implications :** Le r\'e9el serait int\'e9gralement rationnel, ce qui semble d'ailleurs \'eatre la condition m\'eame pour que l'on puisse l'expliquer. Il n'y aurait plus de myst\'e8re, seulement de l'ignorance provisoire.\
+**d) Doxa :** \'c0 premi\'e8re vue, il semble que la raison ait vocation \'e0 tout expliquer. L'opinion commune pense que ce qui \'e9chappe \'e0 la raison aujourd'hui lui c\'e9dera demain. L'inexpliqu\'e9 n'est pas l'inexplicable.\
+**e) Limites :** Cependant, certains ph\'e9nom\'e8nes (l'art, la foi, l'origine de l'univers) semblent r\'e9sister par nature \'e0 l'analyse logique.\
+**f) Probl\'e8me :** L'incapacit\'e9 de la raison \'e0 tout expliquer est-elle une limite provisoire due \'e0 notre ignorance actuelle, ou bien marque-t-elle la fronti\'e8re d\'e9finitive entre ce qui est intelligible et ce qui rel\'e8ve du myst\'e8re de l'existence ?\
+\
+### Phase 2 : Le Plan D\'e9taill\'e9\
+\
+### I. Th\'e8se : L'ambition l\'e9gitime d'une rationalit\'e9 int\'e9grale\
+#### A. Le principe de raison suffisante\
+* **Id\'e9e :** L'esprit humain pose en principe que rien n'arrive sans cause.\
+* **Argument :** Pour que la pens\'e9e puisse fonctionner, elle doit admettre que le r\'e9el est structur\'e9 logiquement. Si l'absurde existait, la science serait impossible.\
+* **R\'e9f philo :** Leibniz ("Rien n'est sans raison").\
+* **Exemple :** La recherche syst\'e9matique des causes d'une maladie, refusant l'id\'e9e de fatalit\'e9.\
+\
+#### B. Le d\'e9terminisme scientifique\
+* **Id\'e9e :** L'univers fonctionne comme une immense m\'e9canique compr\'e9hensible.\
+* **Argument :** Si l'on conna\'eet les lois de la nature et l'\'e9tat initial du syst\'e8me, on peut en th\'e9orie expliquer et pr\'e9dire n'importe quel \'e9v\'e9nement physique.\
+* **R\'e9f philo :** Laplace (Le "D\'e9mon de Laplace").\
+* **Exemple :** La pr\'e9diction exacte d'une \'e9clipse solaire des d\'e9cennies \'e0 l'avance.\
+\
+#### C. L'explication de l'humain lui-m\'eame\
+* **Id\'e9e :** M\'eame les passions et les pens\'e9es ob\'e9issent \'e0 des lois rationnelles.\
+* **Argument :** Ce qui semble irrationnel (sentiments, folie) peut \'eatre expliqu\'e9 objectivement par la psychologie, la biologie ou la sociologie.\
+* **R\'e9f philo :** Spinoza (Il faut traiter les passions humaines "comme s'il \'e9tait question de lignes, de surfaces ou de solides").\
+* **Exemple :** L'explication neurobiologique du sentiment amoureux par la s\'e9cr\'e9tion d'ocytocine.\
+\
+*Transition : [Bilan] La raison semble donc poss\'e9der les outils pour d\'e9coder l'int\'e9gralit\'e9 du r\'e9el. [Question] Toutefois, la raison n'a-t-elle pas ses propres limites internes ? Ne bute-t-elle pas sur la question originelle du "pourquoi" ?*\
+\
+### II. Antith\'e8se : Les limites constitutives de l'explication rationnelle\
+#### A. La distinction entre expliquer et comprendre\
+* **Id\'e9e :** La raison explique les m\'e9canismes, mais \'e9choue \'e0 donner le sens.\
+* **Argument :** L'explication scientifique (le "comment") laisse intacte la question de l'intentionnalit\'e9 ou du v\'e9cu intime (le "pourquoi"). \
+* **R\'e9f philo :** Wilhelm Dilthey (Nous "expliquons" la nature, mais nous "comprenons" la vie de l'esprit).\
+* **Exemple :** Un physicien peut expliquer la m\'e9canique des ondes sonores d'un violon, mais cela n'explique pas *l'\'e9motion* musicale ressentie.\
+\
+#### B. L'incompl\'e9tude logique de la raison\
+* **Id\'e9e :** La raison ne peut pas prouver ses propres fondements.\
+* **Argument :** Tout syst\'e8me logique repose sur des axiomes de d\'e9part qu'il faut admettre sans pouvoir les d\'e9montrer. La raison s'appuie donc ultimement sur une forme d'intuition.\
+* **R\'e9f philo :** G\'f6del (Th\'e9or\'e8me d'incompl\'e9tude : tout syst\'e8me formel contient des v\'e9rit\'e9s ind\'e9montrables en son sein).\
+* **Exemple :** On ne peut pas d\'e9montrer que deux lignes parall\'e8les ne se croisent jamais, c'est un axiome (postulat d'Euclide) pos\'e9 au d\'e9part.\
+\
+#### C. La question insondable de l'existence\
+* **Id\'e9e :** La raison bute sur le myst\'e8re de l'\'catre.\
+* **Argument :** La raison peut expliquer comment le monde \'e9volue, mais elle ne peut pas expliquer pourquoi il y a un monde plut\'f4t que le n\'e9ant. \
+* **R\'e9f philo :** Heidegger ("Pourquoi y a-t-il quelque chose plut\'f4t que rien ?").\
+* **Exemple :** Le Big Bang explique l'expansion de l'univers, mais n'explique pas "l'avant" Big Bang ni d'o\'f9 vient l'\'e9nergie initiale.\
+\
+*Transition : [Bilan] La raison montre son impuissance face au sens intime, \'e0 ses propres fondements et au myst\'e8re de l'existence. [Question] D\'e8s lors, faut-il condamner la raison comme inutile face \'e0 l'essentiel, ou faut-il au contraire la voir comme ce qui nous permet d'identifier et de respecter ce qui la d\'e9passe ?*\
+\
+### III. Synth\'e8se : La grandeur de la raison est de reconna\'eetre ce qui la d\'e9passe\
+#### A. Les illusions de la raison dogmatique\
+* **Id\'e9e :** Une raison qui pr\'e9tend tout expliquer devient totalitaire et illusoire.\
+* **Argument :** Lorsque la raison s'aventure au-del\'e0 du domaine de l'exp\'e9rience (vers Dieu, l'\'e2me), elle produit des illusions et des dogmes in-v\'e9rifiables.\
+* **R\'e9f philo :** Kant (La critique de la raison pure : la raison doit limiter son ambition pour laisser une place \'e0 la foi et \'e0 la morale).\
+* **Exemple :** Les d\'e9rives du scientisme au XIXe si\'e8cle qui pensait remplacer la morale et l'art par des \'e9quations.\
+\
+#### B. Penser l\'e0 o\'f9 l'explication s'arr\'eate\
+* **Id\'e9e :** Ce qui est inexplicable n'est pas pour autant in-pensable.\
+* **Argument :** Si la raison scientifique s'arr\'eate, la raison philosophique (ou po\'e9tique) prend le relais pour "penser" le myst\'e8re, non pour le diss\'e9quer, mais pour l'habiter.\
+* **R\'e9f philo :** Pascal ("La derni\'e8re d\'e9marche de la raison est de reconna\'eetre qu'il y a une infinit\'e9 de choses qui la surpassent").\
+* **Exemple :** \'c9crire un po\'e8me sur la mort : on ne l'explique pas, on lui donne un sens.\
+\
+#### C. La raison comme sauvegarde contre l'obscurantisme\
+* **Id\'e9e :** M\'eame limit\'e9e, la raison reste notre seul outil critique indispensable.\
+* **Argument :** Accepter qu'il y ait de l'inexplicable ne signifie pas c\'e9der \'e0 la superstition. La raison garde son r\'f4le de "nettoyage" pour d\'e9noncer les fausses explications.\
+* **R\'e9f philo :** Bachelard (L'esprit scientifique se construit contre les croyances premi\'e8res).\
+* **Exemple :** Accepter le myst\'e8re de l'origine de l'univers n'autorise pas pour autant \'e0 croire aux horoscopes.\
+                `\
+            \},\
+            \{\
+                title: "Toute v\'e9rit\'e9 est-elle indiscutable ?",\
+                content: `\
+### Phase 1 : Probl\'e9matisation\
+**a) Pr\'e9suppos\'e9 (Grammaire) :** L'utilisation de l'adjectif ind\'e9fini \'ab Toute \'bb pr\'e9suppose l'existence incontest\'e9e de *certaines* v\'e9rit\'e9s indiscutables (comme les math\'e9matiques). La question porte sur l'extension de ce caract\'e8re "indiscutable" \'e0 l'ensemble du champ de la v\'e9rit\'e9.\
+**b) Justification :** La nature m\'eame de la v\'e9rit\'e9 logique (A = A), l'\'e9vidence sensible brute, le besoin de certitudes absolues pour agir et pacifier la soci\'e9t\'e9.\
+**c) Implications :** S'il y a v\'e9rit\'e9, le d\'e9bat doit s'arr\'eater. La v\'e9rit\'e9 serait un pouvoir d'autorit\'e9 qui impose le silence.\
+**d) Doxa :** \'c0 premi\'e8re vue, il semble que la v\'e9rit\'e9 et la discussion s'excluent. Pour l'opinion commune, une v\'e9rit\'e9 qui se discute encore n'est qu'une opinion. La v\'e9rit\'e9 est ce devant quoi on doit s'incliner sans contester.\
+**e) Limites :** Cependant, les v\'e9rit\'e9s scientifiques \'e9voluent \'e0 force de discussions et de remises en cause. De plus, les v\'e9rit\'e9s morales ou politiques n'existent que par le d\'e9bat.\
+**f) Probl\'e8me :** L'indiscutabilit\'e9 est-elle la garantie absolue de la v\'e9rit\'e9 ou, au contraire, l'arr\'eat de la discussion transforme-t-il la v\'e9rit\'e9 en un dogme mort ?\
+\
+### Phase 2 : Le Plan D\'e9taill\'e9\
+\
+### I. Th\'e8se : Par d\'e9finition, la v\'e9rit\'e9 impose l'assentiment et met fin \'e0 la discussion\
+#### A. L'\'e9vidence logique et math\'e9matique\
+* **Id\'e9e :** Les v\'e9rit\'e9s formelles ne rel\'e8vent pas de l'opinion ou du d\'e9bat.\
+* **Argument :** Une proposition analytique s'impose \'e0 tout esprit rationnel. La discuter reviendrait \'e0 nier la logique m\'eame qui permet de parler.\
+* **R\'e9f philo :** Leibniz (Les v\'e9rit\'e9s de raison, dont le contraire est impossible).\
+* **Exemple :** Discuter le fait que 2+2=4 n'est pas un d\'e9bat, c'est une erreur de calcul.\
+\
+#### B. La v\'e9rit\'e9 des faits bruts\
+* **Id\'e9e :** La r\'e9alit\'e9 sensible s'impose \'e0 la conscience de mani\'e8re ind\'e9niable.\
+* **Argument :** Face \'e0 un fait factuel constat\'e9 par tous, la contestation devient de la mauvaise foi. L'\'e9vidence sensible commande notre adh\'e9sion imm\'e9diate.\
+* **R\'e9f philo :** Hannah Arendt (La v\'e9rit\'e9 de fait : elle est t\'eatue et on ne peut l'effacer par des arguments).\
+* **Exemple :** Nier qu'il pleut alors que l'on est sous la pluie n'est pas de la discussion, mais de la folie.\
+\
+#### C. L'autorit\'e9 pacificatrice de la v\'e9rit\'e9 institutionnelle\
+* **Id\'e9e :** La soci\'e9t\'e9 a besoin de cl\'f4turer le d\'e9bat pour exister et agir.\
+* **Argument :** S'il fallait tout discuter tout le temps, l'action serait impossible. La v\'e9rit\'e9 "de la chose jug\'e9e" permet de trancher d\'e9finitivement pour restaurer la paix.\
+* **R\'e9f philo :** Hobbes (C'est l'autorit\'e9, et non la v\'e9rit\'e9 pure, qui fait la loi, pour arr\'eater la guerre des opinions).\
+* **Exemple :** Le verdict final d'un proc\'e8s en cour de cassation cl\'f4t d\'e9finitivement la discussion juridique.\
+\
+*Transition : [Bilan] La v\'e9rit\'e9, qu'elle soit logique ou factuelle, semble donc exiger l'arr\'eat de la discussion. [Question] Toutefois, si l'on interdit la discussion par principe, comment distinguer une v\'e9rit\'e9 d'un dogme impos\'e9 par la force ?*\
+\
+### II. Antith\'e8se : La discussion est le moteur et la garantie de la v\'e9rit\'e9\
+#### A. Le fonctionnement falsificationniste de la science\
+* **Id\'e9e :** La v\'e9rit\'e9 scientifique n'est vraie *que* parce qu'elle reste discutable.\
+* **Argument :** Une th\'e9orie scientifique n'est jamais absolue. Elle est vraie tant qu'elle r\'e9siste aux tentatives de r\'e9futation (discussion exp\'e9rimentale). Interdire la discussion tue la science.\
+* **R\'e9f philo :** Karl Popper (Le crit\'e8re de r\'e9futabilit\'e9).\
+* **Exemple :** La physique d'Einstein discutant et d\'e9passant la m\'e9canique de Newton.\
+\
+#### B. Le dialogue socratique contre les certitudes aveugles\
+* **Id\'e9e :** C'est en discutant qu'on purifie l'esprit de l'erreur et de l'illusion.\
+* **Argument :** Ce qui para\'eet "indiscutable" est tr\'e8s souvent un pr\'e9jug\'e9 culturel. La ma\'efeutique utilise le doute et la contradiction de l'autre pour faire accoucher la v\'e9ritable pens\'e9e.\
+* **R\'e9f philo :** Socrate / Platon (La dialectique).\
+* **Exemple :** Les dialogues de Platon o\'f9 les "\'e9vidences" des sophistes sont d\'e9mont\'e9es par le jeu des questions-r\'e9ponses.\
+\
+#### C. L'exigence de la v\'e9rit\'e9 morale et politique\
+* **Id\'e9e :** Dans le domaine des valeurs, l'indiscutable est synonyme de tyrannie.\
+* **Argument :** La justice ou le bien ne sont pas des objets math\'e9matiques. Ils exigent une d\'e9lib\'e9ration permanente entre les citoyens pour \'eatre consid\'e9r\'e9s comme "vrais" et l\'e9gitimes au sein d'une soci\'e9t\'e9.\
+* **R\'e9f philo :** Habermas (L'\'e9thique de la discussion : la v\'e9rit\'e9 d'une norme repose sur l'accord rationnel des personnes concern\'e9es).\
+* **Exemple :** Le vote d'une loi bio\'e9thique \'e0 l'Assembl\'e9e Nationale apr\'e8s de longs d\'e9bats d\'e9mocratiques contradictoires.\
+\
+*Transition : [Bilan] La discussion s'av\'e8re donc essentielle pour construire et faire vivre la v\'e9rit\'e9. [Question] Mais affirmer que tout est discutable ne m\'e8ne-t-il pas au relativisme absolu o\'f9 "\'e0 chacun sa v\'e9rit\'e9", ruinant l'id\'e9e m\'eame de v\'e9rit\'e9 ?*\
+\
+### III. Synth\'e8se : La v\'e9rit\'e9 comme accord \'e0 construire, entre dogmatisme et relativisme\
+#### A. L'indiscutable comme horizon, le discutable comme chemin\
+* **Id\'e9e :** L'indiscutabilit\'e9 est un id\'e9al vers lequel on tend gr\'e2ce au d\'e9bat.\
+* **Argument :** L'indiscutabilit\'e9 totale est l'objectif (la V\'e9rit\'e9 absolue), mais la discussion est le seul moyen humain d'y tendre. On discute justement *parce que* l'on croit en une v\'e9rit\'e9 commune possible, et non par pur relativisme.\
+* **R\'e9f philo :** Kant (L'Id\'e9e de la raison comme horizon r\'e9gulateur vers lequel on tend sans jamais l'atteindre).\
+* **Exemple :** Les chercheurs qui d\'e9battent \'e2prement lors de colloques partagent le m\'eame but fondamental : trouver la v\'e9rit\'e9 finale.\
+\
+#### B. Les r\'e8gles strictes de la discussion rationnelle\
+* **Id\'e9e :** Toute discussion n'est pas porteuse de v\'e9rit\'e9.\
+* **Argument :** Pour que la discussion m\'e8ne \'e0 la v\'e9rit\'e9 et ne s'ab\'eeme pas dans le sophisme, elle doit ob\'e9ir aux r\'e8gles strictes de la logique et de l'honn\'eatet\'e9 intellectuelle. Ce n'est pas un concours d'\'e9loquence.\
+* **R\'e9f philo :** Schopenhauer (L'Art d'avoir toujours raison, qui d\'e9nonce justement les pi\'e8ges de la mauvaise foi dans le d\'e9bat pour mieux s'en pr\'e9munir).\
+* **Exemple :** La diff\'e9rence radicale entre un clash sur un plateau t\'e9l\'e9vis\'e9 (o\'f9 l'on veut vaincre l'autre) et une soutenance de th\'e8se universitaire (o\'f9 l'on cherche le vrai).\
+\
+#### C. La tol\'e9rance et la pluralit\'e9 des perspectives (le perspectivisme)\
+* **Id\'e9e :** Le r\'e9el est trop riche pour se r\'e9duire \'e0 une seule facette indiscutable.\
+* **Argument :** La discussion est n\'e9cessaire non pas parce que la v\'e9rit\'e9 n'existe pas, mais parce que l'esprit humain est fini. La confrontation des points de vue enrichit la perception globale du vrai.\
+* **R\'e9f philo :** Nietzsche ou Leibniz (Le perspectivisme : la r\'e9alit\'e9 est comme une ville vue sous diff\'e9rents angles).\
+* **Exemple :** L'histoire de la R\'e9volution Fran\'e7aise \'e9tudi\'e9e par un sociologue, puis par un \'e9conomiste : la discussion des deux approches donne une v\'e9rit\'e9 plus profonde de l'\'e9v\'e9nement.\
+                `\
+            \},\
+            \{\
+                title: "Nos techniques nous permettent-elles de dominer la nature ?",\
+                content: `\
+### Phase 1 : Probl\'e9matisation\
+**a) Pr\'e9suppos\'e9 (Grammaire) :** La question utilise le verbe \'ab permettre \'bb (qui interroge \'e0 la fois la *capacit\'e9* mat\'e9rielle et le *droit* moral) et le verbe \'ab dominer \'bb qui pr\'e9suppose une s\'e9paration, une ext\'e9riorit\'e9 et un rapport de force initial (et plut\'f4t hostile) entre l'humanit\'e9 et la nature.\
+**b) Justification :** Le d\'e9veloppement fulgurant des outils, de l'agriculture \'e0 l'\'e8re nucl\'e9aire, et l'inversion du rapport de survie (l'homme ne craint plus la faim ou les b\'eates sauvages).\
+**c) Implications :** La nature serait une simple mati\'e8re premi\'e8re corv\'e9able \'e0 merci, d\'e9nu\'e9e de valeur propre, et l'homme en serait le souverain absolu.\
+**d) Doxa :** \'c0 premi\'e8re vue, il semble \'e9vident que la technique nous a rendus ma\'eetres du monde. Nous domptons les fleuves (barrages), vainquons les maladies (m\'e9decine) et modifions le vivant. La technique est notre titre de propri\'e9t\'e9 incontest\'e9 sur la nature.\
+**e) Limites :** Pourtant, face aux s\'e9ismes ou aux tsunamis, notre impuissance demeure totale. Pire, notre pr\'e9tendue domination technologique (pollutions) d\'e9clenche des r\'e9actions climatiques qui menacent notre propre survie.\
+**f) Probl\'e8me :** La technique est-elle r\'e9ellement l'instrument de notre souverainet\'e9 absolue sur le monde, ou bien cette volont\'e9 de ma\'eetrise ne nous conduit-elle pas \'e0 d\'e9truire les conditions m\'eames de notre existence, r\'e9v\'e9lant la vanit\'e9 de notre domination ?\
+\
+### Phase 2 : Le Plan D\'e9taill\'e9\
+\
+### I. Th\'e8se : La technique affirme la vocation de l'homme \'e0 la ma\'eetrise du monde\
+#### A. La compensation de la faiblesse naturelle originelle\
+* **Id\'e9e :** La technique est ce qui sauve l'homme de la soumission animale et de la peur.\
+* **Argument :** D\'e9nu\'e9 d'instincts sp\'e9cialis\'e9s et de d\'e9fenses naturelles (griffes, fourrure \'e9paisse), l'homme utilise la technique pour survivre. Par l'outil artificiel, il inverse le rapport de force initial qui lui \'e9tait d\'e9favorable.\
+* **R\'e9f philo :** Platon (Le mythe de Prom\'e9th\'e9e dans le *Protagoras* : le feu et les arts m\'e9caniques sont donn\'e9s pour compenser la nudit\'e9 de l'homme).\
+* **Exemple :** L'invention du v\'eatement, de l'arc et du feu pour survivre aux hivers glaciaires.\
+\
+#### B. L'arraisonnement math\'e9matique et scientifique moderne\
+* **Id\'e9e :** Avec la science moderne, la domination devient calcul math\'e9matique et exploitation syst\'e9matique.\
+* **Argument :** L'homme ne se contente plus de survivre, il veut exploiter et modeler la nature selon ses besoins infinis. La nature perd son caract\'e8re sacr\'e9 ou magique pour devenir un grand "magasin" de ressources quantifiables.\
+* **R\'e9f philo :** Descartes (Le projet du *Discours de la M\'e9thode* : utiliser la physique pour "nous rendre comme ma\'eetres et possesseurs de la nature").\
+* **Exemple :** L'agriculture intensive et l'utilisation d'engrais chimiques qui forcent la terre \'e0 produire bien au-del\'e0 de ses rythmes naturels.\
+\
+#### C. L'humanisation spirituelle par le travail technique\
+* **Id\'e9e :** En dominant la mati\'e8re brute, l'homme s'\'e9l\'e8ve spirituellement et s'affirme comme conscience.\
+* **Argument :** La domination technique n'est pas qu'une question de confort mat\'e9riel, c'est le miroir de l'intelligence humaine. L'Homo Faber (l'homme qui fabrique) imprime les plans de son esprit dans la mati\'e8re aveugle.\
+* **R\'e9f philo :** Hegel ou Marx (Le travail est l'acte par lequel l'homme transforme la nature ext\'e9rieure et se transforme lui-m\'eame).\
+* **Exemple :** La construction de l'architecture monumentale (cath\'e9drales, gratte-ciels) qui d\'e9fie les lois de la pesanteur naturelle par pure ing\'e9nierie intellectuelle.\
+\
+*Transition : [Bilan] La technique semble bien nous avoir arrach\'e9s \'e0 la d\'e9pendance naturelle pour faire de nous des souverains. [Question] Toutefois, l'immensit\'e9 de l'univers et les d\'e9r\'e8glements climatiques actuels ne prouvent-ils pas que la nature n'a jamais \'e9t\'e9 r\'e9ellement dompt\'e9e, et qu'elle r\'e9plique \'e0 notre d\'e9mesure ?*\
+\
+### II. Antith\'e8se : L'illusion tragique de la toute-puissance technique\
+#### A. L'irr\'e9ductibilit\'e9 des forces telluriques et cosmiques\
+* **Id\'e9e :** Notre domination est ridicule et locale \'e0 l'\'e9chelle de l'univers.\
+* **Argument :** L'homme ne "ma\'eetrise" qu'une infime pellicule \'e0 la surface de la terre. Les forces fondamentales du cosmos ou des profondeurs g\'e9ologiques \'e9chappent \'e0 tout contr\'f4le technique humain. L'illusion vient d'un d\'e9faut de perspective.\
+* **R\'e9f philo :** Pascal (La disproportion de l'homme face aux deux infinis, \'e9cras\'e9 par l'immensit\'e9 de l'espace naturel).\
+* **Exemple :** L'impuissance absolue et tragique de nos technologies les plus avanc\'e9es face \'e0 un s\'e9isme de magnitude 9 ou \'e0 un tsunami.\
+\
+#### B. La "vengeance" de la nature par l'entropie\
+* **Id\'e9e :** La technique g\'e9n\'e8re des destructions collat\'e9rales qui annulent la domination.\
+* **Argument :** Plus notre puissance technique cro\'eet, plus nous perturbons des \'e9quilibres biosph\'e9riques complexes que nous ne comprenons pas totalement. La nature, qu'on croyait passive, "r\'e9agit" par des crises globales.\
+* **R\'e9f philo :** Michel Serres (*Le Contrat naturel* : La nature devient un "sujet" de droit actif qui nous menace en retour de nos agressions).\
+* **Exemple :** Le d\'e9r\'e8glement climatique induit par l'industrie fossile, qui se retourne aujourd'hui contre les populations humaines (inondations, m\'e9ga-feux, canicules).\
+\
+#### C. L'ali\'e9nation de l'homme par sa propre technique\
+* **Id\'e9e :** Le soi-disant "dominateur" devient l'esclave de ses propres outils.\
+* **Argument :** Le syst\'e8me technicien est devenu si vaste et complexe qu'il impose sa propre logique aveugle (rentabilit\'e9, efficacit\'e9, vitesse) \'e0 l'homme. Nous ne dominons plus la technique, c'est elle qui exige que nous nous adaptions \'e0 elle.\
+* **R\'e9f philo :** Heidegger (L'essence de la technique moderne comme "Arraisonnement" (Gestell) : l'homme lui-m\'eame devient une "ressource humaine", un simple rouage du syst\'e8me).\
+* **Exemple :** L'addiction g\'e9n\'e9ralis\'e9e aux smartphones et la d\'e9pendance totale des soci\'e9t\'e9s aux r\'e9seaux \'e9lectriques (un black-out paralyserait le monde en quelques heures).\
+\
+*Transition : [Bilan] La qu\'eate de domination absolue s'av\'e8re \'eatre une illusion dangereuse, voire suicidaire. [Question] D\'e8s lors, si dominer la nature par la force nous conduit \'e0 notre propre perte, quel nouveau rapport \'e9thique et technique devons-nous inventer avec notre environnement ?*\
+\
+### III. Synth\'e8se : De la domination arrogante \'e0 la responsabilit\'e9 symbiotique\
+#### A. Repenser le mythe de l'ext\'e9riorit\'e9\
+* **Id\'e9e :** L'homme fait partie int\'e9grante de la nature qu'il d\'e9truit.\
+* **Argument :** Le pr\'e9suppos\'e9 m\'eame du sujet (l'homme face \'e0 la nature) est trompeur : nous ne sommes pas un empire ext\'e9rieur \'e0 la nature, nous *sommes* la nature. D\'e9truire la nature par la technique, c'est pratiquer un auto-sabotage physiologique.\
+* **R\'e9f philo :** Spinoza (L'homme n'est pas "un empire dans un empire", il est soumis aux lois universelles de la Nature-Dieu).\
+* **Exemple :** La destruction de la biodiversit\'e9 ou la pollution de l'eau potable entra\'eenent directement l'apparition de nouvelles maladies qui frappent le corps humain.\
+\
+#### B. Le principe responsabilit\'e9 face au pouvoir technique\
+* **Id\'e9e :** La puissance technique doit \'eatre limit\'e9e et guid\'e9e par la morale de la survie.\
+* **Argument :** L'\'e9thique traditionnelle g\'e9rait les rapports entre humains \'e0 court terme. Puisque la technique a d\'e9sormais le pouvoir in\'e9dit de d\'e9truire l'humanit\'e9 enti\'e8re et la plan\'e8te, il faut fonder une nouvelle \'e9thique bas\'e9e sur la prudence et l'anticipation des pires sc\'e9narios lointains.\
+* **R\'e9f philo :** Hans Jonas (*Le Principe responsabilit\'e9* : "Agis de fa\'e7on que les effets de ton action soient compatibles avec la permanence d'une vie authentiquement humaine sur terre").\
+* **Exemple :** L'application stricte du principe de pr\'e9caution concernant les manipulations g\'e9n\'e9tiques ou l'intelligence artificielle autonome.\
+\
+#### C. Vers une technique du m\'e9nagement (l'\'e9co-technologie)\
+* **Id\'e9e :** L'avenir de la technique est de collaborer avec la nature, non de la forcer.\
+* **Argument :** Le but de l'innovation ne doit plus \'eatre l'effraction et le pillage, mais la symbiose intelligente. Il s'agit d'utiliser notre sup\'e9riorit\'e9 intellectuelle pour imiter les cycles naturels, recycler \'e0 l'infini et accompagner les dynamiques du monde sans les briser.\
+* **R\'e9f philo :** Gilbert Simondon (L'objet technique parfait n'est pas celui qui lutte contre son milieu, mais celui qui s'y int\'e8gre harmonieusement, comme la turbine de Guimbal avec la rivi\'e8re).\
+* **Exemple :** Le biomim\'e9tisme (cr\'e9er des pales d'\'e9oliennes plus efficaces en \'e9tudiant les nageoires des baleines) ou le d\'e9veloppement massif de l'\'e9conomie circulaire.\
+                `\
+            \},\
+            \{\
+                title: "Suffit-il d'ob\'e9ir aux lois pour \'eatre juste ?",\
+                content: `\
+### Phase 1 : Probl\'e9matisation\
+**a) Pr\'e9suppos\'e9 (Grammaire) :** La locution verbale \'ab Suffit-il de... \'bb pr\'e9suppose que l'ob\'e9issance aux lois est une condition *n\'e9cessaire* de la justice (elle en fait partie), mais pose la question de savoir si elle est une condition *suffisante* (si elle englobe toute la justice \'e0 elle seule).\
+**b) Justification :** Le r\'f4le de la loi est de maintenir l'ordre et l'\'e9galit\'e9. Celui qui viole la loi (le voleur, le criminel) est universellement consid\'e9r\'e9 comme "injuste".\
+**c) Implications :** La justice serait r\'e9ductible \'e0 la simple l\'e9galit\'e9 stricte. Le bon citoyen docile serait le parangon de l'homme juste, sans qu'on lui demande aucune autre vertu morale personnelle.\
+**d) Doxa :** \'c0 premi\'e8re vue, il semble qu'ob\'e9ir aux lois est la d\'e9finition m\'eame de la justice. Pour l'opinion commune, \'eatre juste, c'est respecter le code p\'e9nal, payer ses imp\'f4ts et ne pas l\'e9ser autrui selon les r\'e8gles \'e9tablies par l'\'c9tat. La justice se confond avec la l\'e9galit\'e9.\
+**e) Limites :** Cependant, l'Histoire regorge de lois d'\'c9tat qui \'e9taient profond\'e9ment injustes, racistes ou in\'e9quitables (l'esclavage, la s\'e9gr\'e9gation). De plus, on peut ob\'e9ir \'e0 la loi par simple peur du gendarme, en \'e9tant int\'e9rieurement rempli de haine ou d'\'e9go\'efsme.\
+**f) Probl\'e8me :** La justice se r\'e9duit-elle \'e0 la simple conformit\'e9 ext\'e9rieure aux lois de l'\'c9tat (le l\'e9gal), ou bien exige-t-elle l'ob\'e9issance \'e0 une norme morale sup\'e9rieure (le l\'e9gitime) doubl\'e9e d'une vertu int\'e9rieure propre au sujet ?\
+\
+### Phase 2 : Le Plan D\'e9taill\'e9\
+\
+### I. Th\'e8se : L'ob\'e9issance aux lois de l'\'c9tat est le fondement objectif de la justice\
+#### A. La sortie de l'injustice de l'\'e9tat de nature\
+* **Id\'e9e :** Sans lois positives, la justice n'est qu'un mot vide ou la loi du plus fort.\
+* **Argument :** \'c0 l'\'e9tat de nature, chacun est juge de sa propre cause, ce qui m\'e8ne \'e0 la guerre de tous contre tous. La justice v\'e9ritable n'appara\'eet que lorsqu'une loi \'e9crite, commune et objective vient fixer les droits de chacun.\
+* **R\'e9f philo :** Hobbes (Dans l'\'e9tat de nature, "rien n'est juste ou injuste". Seule la loi du Souverain institue la justice).\
+* **Exemple :** Le code civil qui d\'e9finit pr\'e9cis\'e9ment ce qu'est la propri\'e9t\'e9, emp\'eachant les vendettas priv\'e9es pour des querelles de voisinage.\
+\
+#### B. L'\'e9galit\'e9 de traitement devant la r\'e8gle\
+* **Id\'e9e :** La loi garantit l'impartialit\'e9, essence de la justice.\
+* **Argument :** La loi est par d\'e9finition g\'e9n\'e9rale et universelle. En ob\'e9issant \'e0 la loi, on traite tous les citoyens de la m\'eame mani\'e8re, sans favoritisme, ce qui est la d\'e9finition m\'eame de la justice distributive ou commutative.\
+* **R\'e9f philo :** Rousseau ("Il n'y a pas de libert\'e9 sans lois... c'est \'e0 la loi seule que les hommes doivent la justice et la libert\'e9").\
+* **Exemple :** Un juge qui applique le bar\'e8me du code p\'e9nal aveugl\'e9ment, que l'accus\'e9 soit riche ou pauvre.\
+\
+#### C. La s\'e9curit\'e9 juridique et la paix sociale\
+* **Id\'e9e :** Ob\'e9ir \'e0 la loi est un devoir de justice envers le corps social.\
+* **Argument :** Si chacun d\'e9cidait d'ob\'e9ir uniquement aux lois qui lui plaisent, la soci\'e9t\'e9 s'effondrerait. Se soumettre \'e0 la loi, m\'eame si elle nous d\'e9pla\'eet, c'est faire \'9cuvre de justice en pr\'e9servant l'harmonie du groupe dont nous profitons tous.\
+* **R\'e9f philo :** Platon (Le dialogue *Criton* : Socrate refuse de fuir sa prison et accepte sa condamnation \'e0 mort injuste par respect pour les Lois d'Ath\'e8nes qui l'ont nourri et \'e9duqu\'e9).\
+* **Exemple :** S'arr\'eater \'e0 un feu rouge en pleine nuit au milieu de nulle part : on le fait par respect du principe l\'e9gal qui garantit la survie de tous.\
+\
+*Transition : [Bilan] L'ob\'e9issance \'e0 la loi positive (le droit \'e9crit) appara\'eet donc comme le pilier indispensable pour sortir de l'arbitraire et instaurer la justice. [Question] Toutefois, l'Histoire n'a-t-elle pas d\'e9montr\'e9 que des \'c9tats entiers pouvaient l\'e9galiser le crime ? Suffit-il vraiment de se conformer \'e0 un texte pour \'eatre quitte envers l'exigence morale de justice ?*\
+\
+### II. Antith\'e8se : La loi positive peut \'eatre injuste et r\'e9clame le recours au Droit Naturel\
+#### A. Le l\'e9gal contre le l\'e9gitime (les lois sc\'e9l\'e9rates)\
+* **Id\'e9e :** Une loi vot\'e9e n'est pas moralement juste par nature.\
+* **Argument :** Le droit positif n'est que l'expression de la volont\'e9 politique d'un moment, parfois dict\'e9e par les pr\'e9jug\'e9s ou les int\'e9r\'eats des puissants. Il y a un \'e9cart fondamental entre la l\'e9galit\'e9 (ce qui est command\'e9 par l'\'c9tat) et la l\'e9gitimit\'e9 (ce qui est command\'e9 par la morale universelle).\
+* **R\'e9f philo :** L\'e9o Strauss (La distinction entre le droit positif et le Droit naturel universel).\
+* **Exemple :** Les lois de s\'e9gr\'e9gation raciale (Jim Crow) aux \'c9tats-Unis, ou les lois antis\'e9mites de Nuremberg : elles \'e9taient parfaitement "l\'e9gales", mais monstrueusement "injustes".\
+\
+#### B. Le devoir de d\'e9sob\'e9issance civile\
+* **Id\'e9e :** Face \'e0 une loi injuste, la vraie justice consiste \'e0 d\'e9sob\'e9ir.\
+* **Argument :** Si la loi de l'\'c9tat bafoue la dignit\'e9 humaine, l'ob\'e9issance devient de la complicit\'e9. L'homme juste est alors celui qui \'e9coute sa conscience morale plut\'f4t que le magistrat, acceptant les sanctions pour \'e9veiller les consciences.\
+* **R\'e9f philo :** Henry David Thoreau (L'inventeur du concept de *D\'e9sob\'e9issance civile* : "La place d'un homme juste est aussi en prison" dans un \'c9tat injuste).\
+* **Exemple :** Rosa Parks refusant de c\'e9der sa place dans le bus \'e0 un homme blanc, violant ainsi la loi pour faire triompher la justice morale.\
+\
+#### C. L'insuffisance de l'ob\'e9issance par contrainte (la l\'e9galit\'e9 vs la moralit\'e9)\
+* **Id\'e9e :** L'intention compte plus que l'action ext\'e9rieure.\
+* **Argument :** On peut ob\'e9ir \'e0 la loi uniquement par l\'e2chet\'e9 ou par \'e9go\'efsme (peur de l'amende), tout en nourrissant des intentions mauvaises. Or, la vraie justice est une vertu de l'\'e2me, elle r\'e9clame que l'on agisse *par* devoir, et non simplement *conform\'e9ment* au devoir.\
+* **R\'e9f philo :** Kant (La distinction cruciale entre l'action "conforme au devoir" (l\'e9galit\'e9) et l'action accomplie "par devoir" moral pur (moralit\'e9)).\
+* **Exemple :** Le commer\'e7ant qui ne vole pas ses clients uniquement parce qu'il a peur des cam\'e9ras de surveillance n'est pas un homme "juste", il est simplement un calculateur peureux.\
+\
+*Transition : [Bilan] Ob\'e9ir aux lois ne suffit manifestement pas : la justice exige un esprit critique face au droit et une droiture d'\'e2me int\'e9rieure. [Question] D\'e8s lors, faut-il abandonner la loi \'e9crite au profit de la seule subjectivit\'e9 morale ? Comment r\'e9concilier l'exigence de la loi commune et l'exigence de la justice absolue ?*\
+\
+### III. Synth\'e8se : La justice est l'effort constant pour perfectionner la loi par l'\'e9quit\'e9\
+#### A. L'\'e9quit\'e9 comme "correction" de la loi\
+* **Id\'e9e :** La loi est trop g\'e9n\'e9rale pour s'appliquer aveugl\'e9ment \'e0 tous les cas particuliers.\
+* **Argument :** La rigidit\'e9 de la loi peut produire des injustices dans des situations exceptionnelles ("Summum jus, summa injuria"). L'homme juste (et le bon juge) ne se contente pas d'appliquer la lettre de la loi, il en adapte l'esprit \'e0 la singularit\'e9 du r\'e9el : c'est l'\'e9quit\'e9.\
+* **R\'e9f philo :** Aristote (*\'c9thique \'e0 Nicomaque* : L'\'e9quit\'e9 est le correctif de la loi l\'e9gale l\'e0 o\'f9 elle se montre insuffisante en raison de son caract\'e8re g\'e9n\'e9ral).\
+* **Exemple :** Le juge Magnaud qui acquitte une m\'e8re c\'e9libataire ayant vol\'e9 un pain pour nourrir son enfant (le d\'e9lit de n\'e9cessit\'e9), faisant primer l'\'e9quit\'e9 sur le code p\'e9nal strict.\
+\
+#### B. La loi comme id\'e9al perfectible\
+* **Id\'e9e :** La justice n'est pas un \'e9tat de fait, c'est un processus d\'e9mocratique inachev\'e9.\
+* **Argument :** Nous devons ob\'e9ir aux lois pour maintenir l'ordre, tout en exer\'e7ant notre droit critique (libert\'e9 d'expression, vote) pour r\'e9former continuellement les lois imparfaites afin qu'elles se rapprochent de l'id\'e9al de justice.\
+* **R\'e9f philo :** John Rawls (*Th\'e9orie de la justice* : La justice comme "\'e9quit\'e9" se construit par le d\'e9bat rationnel et la r\'e9vision des institutions).\
+* **Exemple :** La lente \'e9volution du droit des femmes (droit de vote, droit de travailler sans l'accord du mari) obtenue par la critique perp\'e9tuelle de l'ordre l\'e9gal ancien.\
+\
+#### C. La justice comme vertu globale d'attention \'e0 autrui\
+* **Id\'e9e :** La vraie justice d\'e9borde largement le seul cadre de l'\'c9tat.\
+* **Argument :** Les lois ne peuvent r\'e9gir que nos comportements publics. Mais la justice, au fond, est une attitude de respect fondamental, de bienveillance et d'amour envers l'humanit\'e9 de l'autre, qui commence l\'e0 o\'f9 les codes juridiques s'arr\'eatent.\
+* **R\'e9f philo :** Emmanuel Levinas ou Vladimir Jank\'e9l\'e9vitch (La justice est l'amour et l'attention port\'e9e au visage de l'Autre).\
+* **Exemple :** Aider un ami dans le besoin, \'e9couter quelqu'un qui souffre, ou partager \'e9quitablement les t\'e2ches m\'e9nag\'e8res : ce sont des actes de pure justice qu'aucune loi ne pourra jamais obliger \'e0 accomplir.\
+                `\
+            \}\
+        ];\
+\
+        // === SYSTEM PROMPT ===\
+        const systemInstruction = `\
+Tu es "Mr Duval \'e0 la rescousse" (\uc0\u55357 \u56424 \u8205 \u55356 \u57323 ), un prof de philosophie de Terminale passionn\'e9, ultra-rigoureux sur la m\'e9thode et intraitable sur la logique. Ton but est de guider l'\'e9l\'e8ve via la ma\'efeutique. Ton ton est chaleureux, tu vouvoies l'\'e9l\'e8ve ou le tutoies avec bienveillance, mais tu es strict sur la m\'e9thode.\
+\
+R\'c8GLE D'OR 1 : STRICTEMENT \'c9TAPE PAR \'c9TAPE (VITAL)\
+Tu ne dois JAMAIS demander ou traiter deux \'e9tapes en m\'eame temps. \
+Tu demandes l'\'e9tape A. Tu attends la r\'e9ponse. Tu corriges/valides. ENSUITE tu passes \'e0 la B.\
+\
+R\'c8GLE D'OR 2 : LA S\'c9PARATION ABSOLUE ENTRE A ET D (VITAL)\
+L'\'e9tape A (le Pr\'e9suppos\'e9) et l'\'e9tape D (la Doxa) sont fondamentalement diff\'e9rentes. \
+- LE PR\'c9SUPPOS\'c9 (A) NE R\'c9POND JAMAIS \'c0 LA QUESTION. Il identifie la fondation de la question (un mot, une grammaire, une figure de style). Ex: Si on demande "La libert\'e9 peut-elle \'eatre un fardeau?", le pr\'e9suppos\'e9 N'EST PAS "la libert\'e9 n'est pas un fardeau". Le pr\'e9suppos\'e9 est l'analyse du verbe "peut-elle" (qui indique qu'on questionne une \'e9ventualit\'e9, une exception \'e0 la r\'e8gle).\
+- LA DOXA (D) EST LA R\'c9PONSE SPONTAN\'c9E LOGIQUE issue de A, B et C. Elle doit OBLIGATOIREMENT commencer par "\'c0 premi\'e8re vue, il semble que...".\
+Si l'\'e9l\'e8ve r\'e9pond \'e0 la question globale d\'e8s l'\'e9tape A, REJETTE sa r\'e9ponse et explique-lui la diff\'e9rence.\
+\
+R\'c8GLE D'OR 3 : BOUTONS AIDE ET INDICE\
+- Si "[AIDE]" : Donne la correction de l'\'e9tape EN COURS et donne la consigne de l'\'e9tape SUIVANTE.\
+- Si "[INDICE]" : Ne donne pas la r\'e9ponse. Pose une sous-question ou donne un indice grammatical.\
+\
+R\'c8GLE D'OR 4 : LA NUANCE DIALECTIQUE (TR\'c8S IMPORTANT)\
+Ne te contredis JAMAIS d'une partie \'e0 l'autre dans tes plans ou tes explications. La partie II ne dit pas que la partie I est "fausse", elle montre ses limites ou change de point de vue/d\'e9finition. \
+Exemple: Partie I: "L'expression au sens strict (intentionnelle) requiert la conscience." / Partie II: "Mais l'expression au sens large (le sympt\'f4me corporel) r\'e9v\'e8le l'inconscient".\
+\
+--- PHASE 1 : LA PROBL\'c9MATISATION ---\
+Si l'\'e9l\'e8ve choisit un sujet, demande l'\'e9tape A en premier (et rappelle qu'il faut chercher l'indice grammatical).\
+a) Pr\'e9suppos\'e9 (Analyse grammaticale implicite, SANS R\'c9PONDRE \'e0 la question).\
+b) Justifier ce constat initial.\
+c) Cons\'e9quences de ce constat.\
+d) La Doxa : On rassemble A, B et C pour formuler la r\'e9ponse \'e9vidente ("\'c0 premi\'e8re vue...").\
+e) Les Limites de la doxa.\
+f) Le Probl\'e8me (Paradoxe).\
+\
+--- PHASE 2 : LE PLAN D\'c9TAILL\'c9 ---\
+Une fois le probl\'e8me valid\'e9 (F), on passe au Plan.\
+\uc0\u9888 \u65039  TU EXIGES 3 SOUS-PARTIES (A, B, C) POUR CHAQUE GRANDE PARTIE (I, II, III).\
+\uc0\u9888 \u65039  Tu demandes UNE SOUS-PARTIE \'c0 LA FOIS (Demande I.A, valide. Puis demande I.B...).\
+\uc0\u9888 \u65039  STRUCTURE OBLIGATOIRE POUR CHAQUE SOUS-PARTIE :\
+1. ID\'c9E (L'affirmation)\
+2. ARGUMENT (L'explication logique)\
+3. R\'c9F PHILO (Auteur)\
+4. EXEMPLE (Concret)\
+Refuse la sous-partie s'il manque 1 seul de ces 4 \'e9l\'e9ments.\
+\
+Transitions (entre I.C->II.A et II.C->III.A) : Exige TOUJOURS 1. Bilan de la grande partie pr\'e9c\'e9dente + 2. Question d'ouverture.\
+`;\
+\
+        // === ETAT ET INITIALISATION ===\
+        let chatHistory = [];\
+        const chatContainer = document.getElementById('chat-container');\
+        const chatForm = document.getElementById('chat-form');\
+        const userInput = document.getElementById('user-input');\
+        const sendBtn = document.getElementById('send-btn');\
+        const helpBtn = document.getElementById('help-btn');\
+        const hintBtn = document.getElementById('hint-btn');\
+        const modal = document.getElementById('subject-modal');\
+        const sidebar = document.getElementById('sidebar');\
+        const sidebarOverlay = document.getElementById('sidebar-overlay');\
+\
+        window.onload = () => \{\
+            renderModalSubjects();\
+            renderSolutions();\
+            const welcomeMessage = "Bonjour \'e0 tous ! \uc0\u55357 \u56424 \u8205 \u55356 \u57323  Je suis **Mr Duval**, et on ne va pas faire de la po\'e9sie de comptoir aujourd'hui, on va faire de la logique pure !\\n\\nLa r\'e8gle num\'e9ro 1 de mon cours : on ne confond JAMAIS le pr\'e9suppos\'e9 (ce qui est cach\'e9 dans la grammaire de la question) avec la doxa (la r\'e9ponse spontan\'e9e). On va avancer \'e9tape par \'e9tape, je serai intraitable.\\n\\nPr\'eats pour l'entra\'eenement ? Quel sujet voulez-vous travailler ? (Cliquez sur le bouton **Sujets & Corrig\'e9s** en haut ou tapez-le ici).";\
+            \
+            appendMessage('model', welcomeMessage);\
+            chatHistory.push(\{ role: 'model', parts: [\{ text: welcomeMessage \}] \});\
+        \};\
+\
+        function toggleSidebar() \{\
+            const isClosed = sidebar.classList.contains('-translate-x-full');\
+            if (isClosed) \{\
+                sidebar.classList.remove('-translate-x-full');\
+                sidebarOverlay.classList.remove('hidden');\
+                setTimeout(() => sidebarOverlay.classList.remove('opacity-0'), 10);\
+            \} else \{\
+                sidebar.classList.add('-translate-x-full');\
+                sidebarOverlay.classList.add('opacity-0');\
+                setTimeout(() => sidebarOverlay.classList.add('hidden'), 300);\
+            \}\
+        \}\
+\
+        function switchTab(tabName) \{\
+            const btnTrain = document.getElementById('tab-train');\
+            const btnSol = document.getElementById('tab-solutions');\
+            const contentTrain = document.getElementById('content-train');\
+            const contentSol = document.getElementById('content-solutions');\
+\
+            if(tabName === 'train') \{\
+                btnTrain.className = "pb-3 px-2 md:px-4 tab-active transition-colors uppercase text-xs md:text-sm tracking-widest flex items-center gap-2";\
+                btnSol.className = "pb-3 px-2 md:px-4 tab-inactive hover:text-slate-700 transition-colors uppercase text-xs md:text-sm tracking-widest flex items-center gap-2";\
+                contentTrain.classList.remove('hidden');\
+                contentSol.classList.add('hidden');\
+            \} else \{\
+                btnSol.className = "pb-3 px-2 md:px-4 tab-active transition-colors uppercase text-xs md:text-sm tracking-widest flex items-center gap-2";\
+                btnTrain.className = "pb-3 px-2 md:px-4 tab-inactive hover:text-slate-700 transition-colors uppercase text-xs md:text-sm tracking-widest flex items-center gap-2";\
+                contentSol.classList.remove('hidden');\
+                contentTrain.classList.add('hidden');\
+            \}\
+        \}\
+\
+        function renderModalSubjects() \{\
+            const grid = document.getElementById('modal-subjects-grid');\
+            grid.innerHTML = '';\
+            \
+            for (const [notion, subjects] of Object.entries(subjectCatalog)) \{\
+                const section = document.createElement('div');\
+                section.className = 'bg-white/80 backdrop-blur p-5 rounded-3xl border border-sky-100 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md';\
+                const title = document.createElement('h3');\
+                title.className = 'font-black text-sky-700 mb-4 text-base md:text-lg border-b-2 border-sky-100 pb-2 flex items-center gap-2';\
+                title.innerHTML = `<i class="fa-solid fa-cube text-sky-400 text-sm"></i> $\{notion\}`;\
+                section.appendChild(title);\
+\
+                const ul = document.createElement('ul');\
+                ul.className = 'space-y-2';\
+\
+                subjects.forEach(subject => \{\
+                    const li = document.createElement('li');\
+                    const btn = document.createElement('button');\
+                    btn.className = 'text-left text-sm font-semibold text-slate-600 hover:text-sky-800 hover:bg-sky-50 w-full p-3 rounded-xl transition-all border border-transparent hover:border-sky-200 leading-snug';\
+                    btn.textContent = subject;\
+                    btn.onclick = () => \{\
+                        closeModal();\
+                        userInput.value = `Mr Duval, je suis pr\'eat ! Le sujet est : "$\{subject\}"`;\
+                        resizeTextarea();\
+                        userInput.focus();\
+                    \};\
+                    li.appendChild(btn);\
+                    ul.appendChild(li);\
+                \});\
+                section.appendChild(ul);\
+                grid.appendChild(section);\
+            \}\
+        \}\
+\
+        function renderSolutions() \{\
+            const list = document.getElementById('solutions-list');\
+            list.innerHTML = '';\
+            \
+            correctedSubjects.forEach(sol => \{\
+                const btn = document.createElement('button');\
+                btn.className = 'bg-white/90 backdrop-blur border border-sky-100 p-5 rounded-2xl shadow-sm hover:border-sky-300 hover:shadow-[0_8px_20px_rgba(2,132,199,0.1)] transition-all text-left flex flex-col gap-3 group';\
+                btn.innerHTML = `\
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-sky-600 bg-sky-50 px-2 py-1 rounded-md w-max border border-sky-100">Fiche de R\'e9vision</span>\
+                    <span class="font-black text-slate-800 text-lg group-hover:text-sky-700 transition-colors leading-tight">$\{sol.title\}</span>\
+                    <span class="text-sm text-sky-500 font-bold flex items-center gap-1 mt-auto pt-2 border-t border-sky-50 group-hover:gap-2 transition-all">Lire le corrig\'e9 <i class="fa-solid fa-arrow-right text-xs"></i></span>\
+                `;\
+                btn.onclick = () => showCorrectionText(sol);\
+                list.appendChild(btn);\
+            \});\
+        \}\
+\
+        function showCorrectionText(sol) \{\
+            document.getElementById('solutions-list').classList.add('hidden');\
+            const reader = document.getElementById('solution-reader');\
+            reader.classList.remove('hidden');\
+            \
+            const contentDiv = document.getElementById('solution-content');\
+            contentDiv.innerHTML = `<h1 class="text-3xl font-black text-sky-900 mb-6 pb-4 border-b-2 border-sky-100 leading-tight">$\{sol.title\}</h1>` + marked.parse(sol.content);\
+        \}\
+\
+        function backToSolutionsList() \{\
+            document.getElementById('solution-reader').classList.add('hidden');\
+            document.getElementById('solutions-list').classList.remove('hidden');\
+        \}\
+\
+        function openModal() \{\
+            modal.classList.remove('hidden');\
+            setTimeout(() => \{\
+                modal.classList.remove('opacity-0');\
+                if(window.innerWidth >= 768) \{\
+                    modal.querySelector('.modal-content').classList.remove('scale-95');\
+                \} else \{\
+                    modal.querySelector('.modal-content').classList.remove('translate-y-full');\
+                \}\
+            \}, 10);\
+        \}\
+\
+        function closeModal() \{\
+            modal.classList.add('opacity-0');\
+            if(window.innerWidth >= 768) \{\
+                modal.querySelector('.modal-content').classList.add('scale-95');\
+            \} else \{\
+                modal.querySelector('.modal-content').classList.add('translate-y-full');\
+            \}\
+            setTimeout(() => \{ modal.classList.add('hidden'); \}, 300);\
+        \}\
+\
+        helpBtn.addEventListener('click', () => \{\
+            const helpText = "[AIDE] Je bloque sur cette \'e9tape. Donnez-moi la correction compl\'e8te svp, puis annoncez-moi l'\'e9tape suivante.";\
+            processUserMessage(helpText, 'help'); \
+        \});\
+\
+        hintBtn.addEventListener('click', () => \{\
+            const hintText = "[INDICE] Mr Duval, un petit indice (question ou grammaire) pour me d\'e9bloquer sur l'\'e9tape actuelle (sans me donner la r\'e9ponse) ?";\
+            processUserMessage(hintText, 'hint'); \
+        \});\
+\
+        chatForm.addEventListener('submit', async (e) => \{\
+            e.preventDefault();\
+            const text = userInput.value.trim();\
+            if (!text) return;\
+            processUserMessage(text, 'normal');\
+        \});\
+\
+        async function processUserMessage(text, type) \{\
+            if (type === 'help') \{\
+                appendMessage('user', "Mr Duval, je rends les armes pour cette \'e9tape. J'ai besoin de la correction ! \uc0\u55357 \u57055 ", 'help');\
+            \} else if (type === 'hint') \{\
+                appendMessage('user', "Mr Duval, je suis coinc\'e9, il me faut un indice ! \uc0\u55357 \u56481 ", 'hint');\
+            \} else \{\
+                appendMessage('user', text, 'normal');\
+            \}\
+            \
+            userInput.value = '';\
+            resizeTextarea();\
+            \
+            chatHistory.push(\{ role: 'user', parts: [\{ text: text \}] \});\
+            setLoading(true);\
+            await fetchGeminiResponse();\
+        \}\
+\
+        userInput.addEventListener('keydown', function(e) \{\
+            if (e.key === 'Enter' && !e.shiftKey) \{\
+                e.preventDefault();\
+                if(window.innerWidth < 768) \{\
+                   setTimeout(() => chatForm.dispatchEvent(new Event('submit')), 10);\
+                \} else \{\
+                   chatForm.dispatchEvent(new Event('submit'));\
+                \}\
+            \}\
+        \});\
+\
+        function resizeTextarea() \{\
+            userInput.style.height = 'auto';\
+            userInput.style.height = (userInput.scrollHeight) + 'px';\
+            if(userInput.scrollHeight > 150) userInput.style.overflowY = 'auto';\
+            else userInput.style.overflowY = 'hidden';\
+            if(userInput.value === '') userInput.style.height = '56px'; \
+        \}\
+        userInput.addEventListener('input', resizeTextarea);\
+\
+        function appendMessage(role, text, type = 'normal') \{\
+            const div = document.createElement('div');\
+            div.className = `flex w-full message-appear $\{role === 'user' ? 'justify-end' : 'justify-start'\}`;\
+            \
+            const bubble = document.createElement('div');\
+            let styleClass = '';\
+            let iconStr = '';\
+            let iconClass = '';\
+            \
+            if (role === 'user') \{\
+                if(type === 'help') \{\
+                    styleClass = 'bg-gradient-to-br from-amber-400 to-orange-500 text-white rounded-[24px] rounded-br-md shadow-[0_8px_20px_rgba(245,158,11,0.25)] border border-amber-300'; \
+                    iconStr = '\uc0\u55357 \u57055 '; iconClass = 'bg-amber-50 text-amber-500 border-2 border-amber-200 ml-2 md:ml-3';\
+                \} else if (type === 'hint') \{\
+                    styleClass = 'bg-gradient-to-br from-cyan-400 to-sky-500 text-white rounded-[24px] rounded-br-md shadow-[0_8px_20px_rgba(14,165,233,0.25)] border border-cyan-300'; \
+                    iconStr = '\uc0\u55357 \u56481 '; iconClass = 'bg-cyan-50 text-cyan-500 border-2 border-cyan-200 ml-2 md:ml-3';\
+                \} else \{\
+                    styleClass = 'bg-gradient-to-br from-sky-500 to-blue-600 text-white rounded-[24px] rounded-br-md shadow-[0_8px_20px_rgba(2,132,199,0.25)] border border-sky-400';\
+                    iconStr = '\uc0\u55357 \u56420 '; iconClass = 'bg-sky-50 border-2 border-sky-200 ml-2 md:ml-3 text-sky-600';\
+                \}\
+            \} else \{\
+                styleClass = 'bg-white/90 backdrop-blur-md border border-white text-slate-700 rounded-[24px] rounded-tl-md shadow-[0_8px_30px_rgba(0,0,0,0.04)] prose prose-sm md:prose-base max-w-none';\
+                iconStr = '\uc0\u55357 \u56424 \u8205 \u55356 \u57323 '; iconClass = 'bg-white border-2 border-sky-100 mr-2 md:mr-3 text-sky-600 shadow-sm';\
+            \}\
+            \
+            bubble.className = `max-w-[90%] md:max-w-[75%] p-4 md:p-5 font-medium $\{styleClass\}`;\
+\
+            if (role === 'model') \{\
+                bubble.innerHTML = marked.parse(text);\
+            \} else \{\
+                bubble.textContent = text;\
+                bubble.innerHTML = bubble.innerHTML.replace(/\\n/g, '<br>');\
+            \}\
+\
+            const iconDiv = document.createElement('div');\
+            iconDiv.className = `flex-shrink-0 w-9 h-9 md:w-11 md:h-11 rounded-full flex items-center justify-center mt-auto mb-1 shadow-md text-base md:text-xl z-10 $\{iconClass\}`;\
+            iconDiv.innerHTML = iconStr;\
+            \
+            if (role === 'user') \{\
+                div.appendChild(bubble);\
+                div.appendChild(iconDiv);\
+            \} else \{\
+                div.appendChild(iconDiv);\
+                div.appendChild(bubble);\
+            \}\
+\
+            chatContainer.appendChild(div);\
+            scrollToBottom();\
+        \}\
+\
+        function setLoading(isLoading) \{\
+            userInput.disabled = isLoading;\
+            sendBtn.disabled = isLoading;\
+            helpBtn.disabled = isLoading;\
+            hintBtn.disabled = isLoading;\
+            \
+            const btnStateClass = ['opacity-50', 'cursor-not-allowed', 'scale-95'];\
+            if(isLoading) \{\
+                helpBtn.classList.add(...btnStateClass);\
+                hintBtn.classList.add(...btnStateClass);\
+            \} else \{\
+                helpBtn.classList.remove(...btnStateClass);\
+                hintBtn.classList.remove(...btnStateClass);\
+            \}\
+            \
+            if (isLoading) \{\
+                const div = document.createElement('div');\
+                div.id = 'typing-indicator';\
+                div.className = 'flex w-full justify-start message-appear';\
+                div.innerHTML = `\
+                    <div class="flex-shrink-0 w-9 h-9 md:w-11 md:h-11 rounded-full bg-white border-2 border-sky-100 text-sky-600 text-xl flex items-center justify-center mr-2 md:mr-3 mt-auto mb-1 shadow-sm z-10">\uc0\u55357 \u56424 \u8205 \u55356 \u57323 </div>\
+                    <div class="bg-white/90 backdrop-blur-md border border-white rounded-[24px] rounded-tl-md p-4 md:p-5 shadow-[0_8px_30px_rgba(0,0,0,0.04)] typing-indicator flex items-center h-[56px]">\
+                        <span></span><span></span><span></span>\
+                    </div>\
+                `;\
+                chatContainer.appendChild(div);\
+                scrollToBottom();\
+            \} else \{\
+                const indicator = document.getElementById('typing-indicator');\
+                if (indicator) indicator.remove();\
+                if(window.innerWidth >= 768) userInput.focus();\
+            \}\
+        \}\
+\
+        function scrollToBottom() \{\
+            setTimeout(() => \{ chatContainer.scrollTop = chatContainer.scrollHeight; \}, 50); \
+        \}\
+\
+        resizeTextarea();\
+\
+        async function fetchGeminiResponse(retryCount = 0) \{\
+            const maxRetries = 5;\
+            const delays = [1000, 2000, 4000, 8000, 16000];\
+            const payload = \{ systemInstruction: \{ parts: [\{ text: systemInstruction \}] \}, contents: chatHistory \};\
+\
+            try \{\
+                const response = await fetch(MODEL_URL, \{\
+                    method: 'POST',\
+                    headers: \{ 'Content-Type': 'application/json' \},\
+                    body: JSON.stringify(payload)\
+                \});\
+                if (!response.ok) throw new Error(`Erreur HTTP: $\{response.status\}`);\
+                const data = await response.json();\
+                const modelText = data.candidates?.[0]?.content?.parts?.[0]?.text;\
+\
+                if (modelText) \{\
+                    setLoading(false);\
+                    appendMessage('model', modelText);\
+                    chatHistory.push(\{ role: 'model', parts: [\{ text: modelText \}] \});\
+                \} else throw new Error("R\'e9ponse vide de l'API");\
+            \} catch (error) \{\
+                if (retryCount < maxRetries) \{\
+                    setTimeout(() => fetchGeminiResponse(retryCount + 1), delays[retryCount]);\
+                \} else \{\
+                    setLoading(false);\
+                    appendMessage('model', "*(Un probl\'e8me de r\'e9seau au lyc\'e9e, s\'fbrement la faute du Wi-Fi ! \uc0\u9889  Pouvez-vous renvoyer le message ?)*");\
+                    chatHistory.pop();\
+                \}\
+            \}\
+        \}\
+    </script>\
+</body>\
+</html>}
